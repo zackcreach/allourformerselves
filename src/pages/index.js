@@ -4,10 +4,16 @@ import { Link } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
+import IndexStyles from './styles/indexStyles'
+
+import logo from '../images/logo--black.svg'
+
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <Link to="/page-2/">Go to page 2</Link>
+    <IndexStyles>
+      <SEO title="All Our Former Selves" keywords={[`All Our Former Selves`]} />
+      <img src={logo} />
+    </IndexStyles>
   </Layout>
 )
 
