@@ -35,7 +35,7 @@ injectGlobal`
 import Header from './header'
 
 const Layout = ({ children }) => (
-  <ThemeProvider>
+  <ThemeProvider theme={theme}>
     <StaticQuery
       query={graphql`
         query SiteTitleQuery {
