@@ -18,6 +18,10 @@ const GlobalStyles = createGlobalStyle`
     font-family: ${props => props.theme.font.primary};
     color: ${props => props.theme.color.primary};
   }
+
+  img {
+    vertical-align: top;
+  }
   
   a {
     color: ${props => props.theme.color.primary};

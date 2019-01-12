@@ -33,7 +33,7 @@ const Layout = ({ children }) => (
       <ThemeProvider theme={theme}>
         <>
           <GlobalStyles />
-          {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
+          <Header siteTitle={data.site.siteMetadata.title} />
           <LayoutStyles>{children}</LayoutStyles>
         </>
       </ThemeProvider>
