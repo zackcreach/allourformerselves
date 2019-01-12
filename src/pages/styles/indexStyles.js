@@ -1,9 +1,6 @@
 import styled from 'styled-components'
 
-const HeaderStyles = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const IndexStyles = styled.div`
   height: 100vh;
 
   img {
@@ -11,4 +8,4 @@ const HeaderStyles = styled.div`
   }
 `
 
-export default HeaderStyles
+export default IndexStyles

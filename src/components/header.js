@@ -3,11 +3,13 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import HeaderStyles from './styles/headerStyles'
+import Menu from './menu'
 import logo from '../images/logo--black.svg'
 
 const Header = ({ siteTitle }) => (
   <HeaderStyles>
     <div className="container">
+      <Menu />
       <a className="logo-link" href="/">
         <img className="logo" src={logo} alt="All Our Former Selves logo" />
       </a>

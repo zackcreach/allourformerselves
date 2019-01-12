@@ -16,6 +16,11 @@ const theme = {
     primary: 'Roboto, Helvetica, Arial, sans-serif',
     secondary: 'Roboto Condensed, Helvetica, sans-serif',
   },
+  width: {
+    small: '400px',
+    medium: '800px',
+    large: '1200px',
+  },
 }
 
 const Layout = ({ children }) => (
