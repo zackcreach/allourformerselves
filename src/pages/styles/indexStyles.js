@@ -1,11 +1,5 @@
 import styled from 'styled-components'
 
-const IndexStyles = styled.div`
-  height: 100vh;
-
-  img {
-    width: 50%;
-  }
-`
+const IndexStyles = styled.div``
 
 export default IndexStyles

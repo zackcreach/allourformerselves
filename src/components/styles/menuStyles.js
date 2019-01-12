@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
 const MenuStyles = styled.div`
-  .hamburger {
+  figure {
     position: absolute;
     margin: 0;
-    width: 25px;
-    height: 20px;
+    width: 28px;
+    height: 18px;
     top: 50%;
     left: 30px;
     transform: translate3d(0, -50%, 0);
@@ -28,10 +28,26 @@ const MenuStyles = styled.div`
     position: absolute;
     left: 0;
     top: 100%;
-    bottom: 0;
-    height: 100%;
-    width: 350px;
-    background: blue;
+    height: calc(100vh - 100%);
+    width: 100%;
+    background: #111;
+
+    @media (min-width: ${props => props.theme.width.medium}) {
+    width: 300px;
+    }
+    )
+  }
+
+  a {
+    font-family: ${props => props.theme.font.secondary};
+    user-select: none;
+    color: #ccc;
+    display: block;
+    font-weight: 300;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    padding: 15px 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 `
 

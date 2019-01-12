@@ -1,7 +1,6 @@
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 import MenuStyles from './styles/menuStyles'
 
@@ -13,7 +12,7 @@ const Menu = ({ siteTitle }) => {
   ])
   return (
     <MenuStyles>
-      <figure className="hamburger" onClick={() => setShowMenu(!showMenu)} />
+      <figure onClick={() => setShowMenu(!showMenu)} />
       {showMenu && (
         <main>
           {links.map((node, index) => (
