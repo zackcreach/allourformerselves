@@ -24,11 +24,31 @@ const MenuStyles = styled.div`
     }
   }
 
+  .mask {
+    position: fixed;
+    top: ${props => props.containerHeight || '100%'};
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.25);
+    transition: all 0.25s ease-in-out;
+  }
+
+  .mask--active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mask--inactive {
+    opacity: 0;
+    visibility: hidden;
+  }
+
   main {
     position: absolute;
     left: 0;
     top: 100%;
-    height: calc(100vh - 100%);
+    height: calc(100vh - ${props => props.containerHeight || '100%'});
     width: 100%;
     background: #111;
 

@@ -4,7 +4,7 @@ import React, { useRef, useState, useEffect } from 'react'
 
 import MenuStyles from './styles/menuStyles'
 
-const Menu = ({ siteTitle }) => {
+const Menu = ({ siteTitle, containerHeight }) => {
   const [showMenu, setShowMenu] = useState(false)
   const links = [{ name: 'Home', link: '/' }, { name: 'About', link: '/about' }]
 
@@ -13,6 +13,7 @@ const Menu = ({ siteTitle }) => {
 
   useEffect(() => {
     window.addEventListener('click', handleClick)
+    // [] second argument is equivalent to ComponentDidMount (only fires once)
   }, [])
 
   const handleClick = event => {
@@ -29,7 +30,7 @@ const Menu = ({ siteTitle }) => {
   }
 
   return (
-    <MenuStyles>
+    <MenuStyles containerHeight={containerHeight}>
       <figure ref={figureRef} />
       <div className={showMenu ? 'mask mask--active' : 'mask mask--inactive'} />
       {showMenu && (
@@ -47,6 +48,7 @@ const Menu = ({ siteTitle }) => {
 
 Menu.propTypes = {
   siteTitle: PropTypes.string,
+  containerRef: PropTypes.object,
 }
 
 Menu.defaultProps = {
