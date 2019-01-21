@@ -1,7 +1,48 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const path = require('path')
 
-// You can delete this file if you're not using it
+exports.createPages = ({ graphql, boundActionCreators }) => {
+  const { createPage } = boundActionCreators
+  return new Promise((resolve, reject) => {
+    graphql(`
+      {
+        allFile {
+          edges {
+            node {
+              relativeDirectory
+              name
+            }
+          }
+        }
+        allContentfulProduct {
+          edges {
+            node {
+              slug
+            }
+          }
+        }
+      }
+    `)
+      .then(result => {
+        let currentProducts = ['/']
+        result.data.allFile.edges.filter(({ node }) => {
+          if (node.relativeDirectory.includes('product')) {
+            return currentProducts.push(node.name)
+          }
+        })
+        result.data.allContentfulProduct.edges.map(({ node }) => {
+          if (currentProducts.indexOf(node.slug) === -1) {
+            console.log(`Creating new product page: ${node.slug}`)
+            createPage({
+              path: `${node.slug}`,
+              component: path.resolve('./src/templates/product.js'),
+              context: {
+                slug: node.slug,
+              },
+            })
+          }
+        })
+      })
+      .catch(error => console.error(error))
+    resolve()
+  })
+}
