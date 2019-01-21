@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const MenuStyles = styled.div`
   figure {
@@ -24,6 +25,11 @@ const MenuStyles = styled.div`
     }
   }
 
+  .mask__content {
+    height: 100%;
+    width: 100%;
+  }
+
   .mask {
     position: fixed;
     top: ${props => props.containerHeight || '100%'};
@@ -31,17 +37,23 @@ const MenuStyles = styled.div`
     bottom: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.25);
-    transition: all 0.25s ease-in-out;
+    transition: opacity ${props => props.animationDuration / 1000}s ease-out;
   }
 
-  .mask--active {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .mask--inactive {
+  .mask-enter {
     opacity: 0;
-    visibility: hidden;
+  }
+
+  .mask-enter-active {
+    opacity: 1;
+  }
+
+  .mask-exit {
+    opacity: 1;
+  }
+
+  .mask-exit-active {
+    opacity: 0;
   }
 
   main {
@@ -68,6 +80,31 @@ const MenuStyles = styled.div`
     padding: 15px 40px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
+
+  .slide-right {
+    transition: transform ${props => props.animationDuration / 1000}s ease-out;
+  }
+
+  .slide-right-enter {
+    transform: translateX(-100%);
+  }
+
+  .slide-right-enter-active {
+    transform: translateX(0);
+  }
+
+  .slide-right-exit {
+    transform: translateX(0);
+  }
+
+  .slide-right-exit-active {
+    transform: translateX(-100%);
+  }
 `
+
+MenuStyles.propTypes = {
+  containerHeight: PropTypes.string,
+  animationDuration: PropTypes.number,
+}
 
 export default MenuStyles
