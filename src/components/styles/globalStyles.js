@@ -27,6 +27,26 @@ const GlobalStyles = createGlobalStyle`
     color: ${props => props.theme.color.primary};
     text-decoration: none;
   }
+
+  main {
+    padding: 40px 20px;
+    margin: 0 auto;
+    max-width: 1240px;
+  }
+
+  h1 {
+    font-family: ${props => props.theme.font.secondary};
+    font-size: 20px;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    font-family: ${props => props.theme.font.secondary};
+    font-size: 16px;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
 `
 
 export default GlobalStyles

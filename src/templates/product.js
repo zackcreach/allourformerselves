@@ -8,14 +8,21 @@ import SEO from '../components/seo'
 import ProductStyles from './styles/productStyles'
 
 const Product = ({ data: { contentfulProduct: product } }) => {
-  console.log(product)
   return (
     <Layout>
+      <SEO title={product.name} keywords={[`All Our Former Selves`]} />
       <ProductStyles>
-        <SEO title={product.name} keywords={[`All Our Former Selves`]} />
-        {product.images.map(node => (
-          <Img sizes={node.sizes} />
-        ))}
+        <main>
+          <h1 className="title">{product.name}</h1>
+          <section className="container">
+            <div className="left">
+              {product.images.map(node => (
+                <Img fluid={node.fluid} />
+              ))}
+            </div>
+            <div className="right">asdf</div>
+          </section>
+        </main>
       </ProductStyles>
     </Layout>
   )
@@ -32,8 +39,8 @@ export const productQuery = graphql`
       }
       price
       images {
-        sizes(maxWidth: 1280) {
-          ...GatsbyContentfulSizes
+        fluid(maxWidth: 400) {
+          ...GatsbyContentfulFluid
         }
       }
       sizes

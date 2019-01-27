@@ -2,7 +2,10 @@ import styled from 'styled-components'
 
 const HeaderStyles = styled.header`
   .container {
-    position: relative;
+    /* position: ${props => (props.headerFixed ? 'fixed' : 'absolute')}; */
+    position: fixed;
+    z-index: 1;
+    width: 100%;
     display: flex;
     justify-content: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);

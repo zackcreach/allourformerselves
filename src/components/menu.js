@@ -5,7 +5,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 import MenuStyles from './styles/menuStyles'
 
-const Menu = ({ siteTitle, containerHeight }) => {
+const Menu = ({ siteTitle, containerRef }) => {
   const [showMenu, setShowMenu] = useState(false)
   const links = [{ name: 'Home', link: '/' }, { name: 'About', link: '/about' }]
 
@@ -16,7 +16,6 @@ const Menu = ({ siteTitle, containerHeight }) => {
 
   useEffect(() => {
     window.addEventListener('click', handleClick)
-    // [] second argument is equivalent to ComponentDidMount (only fires once)
   }, [])
 
   const handleClick = event => {
@@ -34,7 +33,7 @@ const Menu = ({ siteTitle, containerHeight }) => {
 
   return (
     <MenuStyles
-      containerHeight={containerHeight}
+      containerRef={containerRef}
       animationDuration={animationDuration}
     >
       <figure ref={figureRef} />

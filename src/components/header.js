@@ -6,25 +6,40 @@ import HeaderStyles from './styles/headerStyles'
 import Menu from './menu'
 import logo from '../images/logo--black.svg'
 
-const Header = ({ siteTitle }) => {
-  const [containerHeight, setContainerHeight] = useState('')
-  const containerRef = useRef()
+const Header = ({ siteTitle, containerRef, containerHeight }) => {
+  const [headerFixed, setHeaderFixed] = useState(false)
 
-  useEffect(
-    () => {
-      setContainerHeight(`${containerRef.current.offsetHeight - 1}px`)
-    },
-    // Only update if the value changes
-    [containerRef.current]
-  )
+  // useEffect(
+  //   () => {
+  //     const layout = document.querySelector(`[class^=layoutStyles]`)
+  //     if (headerFixed) {
+  //       layout.style.paddingTop = containerHeight
+  //     } else {
+  //       layout.removeAttribute('style')
+  //     }
+  //   },
+  //   [headerFixed]
+  // )
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+  }, [])
+
+  const handleScroll = () => {
+    if (window.pageYOffset > 1) {
+      setHeaderFixed(true)
+    } else {
+      setHeaderFixed(false)
+    }
+  }
 
   return (
-    <HeaderStyles>
+    <HeaderStyles headerFixed={headerFixed}>
       <div className="container" ref={containerRef}>
         <Menu containerHeight={containerHeight} />
-        <a className="logo-link" href="/">
+        <Link className="logo-link" to="/">
           <img className="logo" src={logo} alt="All Our Former Selves logo" />
-        </a>
+        </Link>
       </div>
     </HeaderStyles>
   )

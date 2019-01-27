@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 import { ThemeProvider } from 'styled-components'
@@ -23,28 +23,58 @@ const theme = {
   },
 }
 
-const Layout = ({ children }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
+const Layout = ({ children }) => {
+  const [containerHeight, setContainerHeight] = useState('')
+  const containerRef = useRef()
+
+  // useEffect(() => {
+  //   window.addEventListener('resize', recalculateHeaderHeight)
+  // }, [])
+
+  useEffect(
+    () => {
+      setContainerHeight(`${containerRef.current.offsetHeight - 1}px`)
+    },
+    [containerRef.current]
+  )
+
+  let resizeTimer
+  const recalculateHeaderHeight = () => {
+    clearTimeout(resizeTimer)
+    resizeTimer = setTimeout(() => {
+      setContainerHeight(`${containerRef.current.offsetHeight - 1}px`)
+    }, 250)
+  }
+
+  return (
+    <StaticQuery
+      query={graphql`
+        query SiteTitleQuery {
+          site {
+            siteMetadata {
+              title
+            }
           }
         }
-      }
-    `}
-    render={data => (
-      <ThemeProvider theme={theme}>
-        <>
-          <GlobalStyles />
-          <Header siteTitle={data.site.siteMetadata.title} />
-          <LayoutStyles>{children}</LayoutStyles>
-        </>
-      </ThemeProvider>
-    )}
-  />
-)
+      `}
+      render={data => (
+        <ThemeProvider theme={theme}>
+          <>
+            <GlobalStyles />
+            <Header
+              containerRef={containerRef}
+              containerHeight={containerHeight}
+              siteTitle={data.site.siteMetadata.title}
+            />
+            <LayoutStyles containerHeight={containerHeight}>
+              {children}
+            </LayoutStyles>
+          </>
+        </ThemeProvider>
+      )}
+    />
+  )
+}
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

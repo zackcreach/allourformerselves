@@ -32,7 +32,7 @@ const MenuStyles = styled.div`
 
   .mask {
     position: fixed;
-    top: ${props => props.containerHeight || '100%'};
+    top: ${props => props.containerRef || '100%'};
     right: 0;
     bottom: 0;
     left: 0;
@@ -60,7 +60,7 @@ const MenuStyles = styled.div`
     position: absolute;
     left: 0;
     top: 100%;
-    height: calc(100vh - ${props => props.containerHeight || '100%'});
+    height: calc(100vh - ${props => props.containerRef || '100%'});
     width: 100%;
     background: #111;
 
@@ -103,7 +103,7 @@ const MenuStyles = styled.div`
 `
 
 MenuStyles.propTypes = {
-  containerHeight: PropTypes.string,
+  containerRef: PropTypes.string,
   animationDuration: PropTypes.number,
 }
 
