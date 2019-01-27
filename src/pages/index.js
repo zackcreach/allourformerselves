@@ -42,7 +42,7 @@ export const ProductsQuery = graphql`
           name
           slug
           images {
-            fluid(maxWidth: 1500) {
+            fluid(maxWidth: 1300) {
               ...GatsbyContentfulFluid_noBase64
             }
           }

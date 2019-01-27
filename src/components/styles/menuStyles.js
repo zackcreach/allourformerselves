@@ -58,6 +58,7 @@ const MenuStyles = styled.div`
 
   main {
     position: absolute;
+    padding: 0;
     left: 0;
     top: 100%;
     height: calc(100vh - ${props => props.containerRef || '100%'});

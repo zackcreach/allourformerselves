@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
@@ -8,19 +8,72 @@ import SEO from '../components/seo'
 import ProductStyles from './styles/productStyles'
 
 const Product = ({ data: { contentfulProduct: product } }) => {
+  const rightRef = useRef()
+  const [rightFixed, setRightFixed] = useState(false)
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+
+    return function removeListener() {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  const handleScroll = event => {
+    const desktop = window.innerWidth >= 800
+    const descriptionHeight = rightRef.current.getBoundingClientRect().top
+    if (desktop && window.pageYOffset >= descriptionHeight) {
+      setRightFixed(true)
+    } else {
+      setRightFixed(false)
+    }
+  }
+
   return (
     <Layout>
       <SEO title={product.name} keywords={[`All Our Former Selves`]} />
-      <ProductStyles>
+      <ProductStyles rightFixed={rightFixed}>
         <main>
           <h1 className="title">{product.name}</h1>
           <section className="container">
             <div className="left">
               {product.images.map(node => (
-                <Img fluid={node.fluid} />
+                <Img
+                  className="image-container"
+                  fluid={node.fluid}
+                  key={node.fluid.src}
+                />
               ))}
             </div>
-            <div className="right">asdf</div>
+            <div className="right">
+              <div className="right__container" ref={rightRef}>
+                <p
+                  className="description"
+                  dangerouslySetInnerHTML={{
+                    __html: product.description.description,
+                  }}
+                />
+                <div className="options">
+                  <h3 className="title">Colors</h3>
+                  <ul className="list colors">
+                    {product.colors.map(node => (
+                      <li
+                        className="colors__block"
+                        style={{ backgroundColor: node }}
+                      />
+                    ))}
+                  </ul>
+                </div>
+                <div className="options">
+                  <h3 className="title">Sizes</h3>
+                  <ul className="list sizes">
+                    {product.sizes.map(node => (
+                      <li className="sizes__block">{node}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
           </section>
         </main>
       </ProductStyles>

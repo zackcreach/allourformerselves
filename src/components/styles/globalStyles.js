@@ -8,11 +8,11 @@ const GlobalStyles = createGlobalStyle`
 
   *, *:before, *:after {
     box-sizing: inherit;
+    padding: 0;
+    margin: 0;
   }
 
   body {
-    padding: 0;
-    margin: 0;
     font-size: 1.5rem;
     line-height: 2;
     font-family: ${props => props.theme.font.primary};
@@ -37,15 +37,34 @@ const GlobalStyles = createGlobalStyle`
   h1 {
     font-family: ${props => props.theme.font.secondary};
     font-size: 20px;
+    line-height: 1;
     font-weight: 300;
     text-transform: uppercase;
+    padding-bottom: 20px;
   }
 
   h2 {
     font-family: ${props => props.theme.font.secondary};
     font-size: 16px;
+    line-height: 1;
     font-weight: 300;
     text-transform: uppercase;
+  }
+
+  h3 {
+    font-family: ${props => props.theme.font.secondary};
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 23px;
+    color: ${props => props.theme.color.primary};
+    font-weight: 300;
+    
   }
 `
 

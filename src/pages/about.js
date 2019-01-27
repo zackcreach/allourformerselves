@@ -1,18 +1,19 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-import AboutStyles from './styles/AboutStyles'
+import AboutStyles from './styles/aboutStyles'
 
 const AboutPage = ({ data }) => {
   return (
     <Layout>
       <SEO />
       <AboutStyles>
-        <main>{data.contentfulPage.content.content}</main>
+        <main>
+          <p>{data.contentfulPage.content.content}</p>
+        </main>
       </AboutStyles>
     </Layout>
   )
