@@ -37,7 +37,7 @@ const GlobalStyles = createGlobalStyle`
   h1 {
     font-family: ${props => props.theme.font.secondary};
     font-size: 20px;
-    line-height: 1;
+    line-height: 28px;
     font-weight: 300;
     text-transform: uppercase;
     padding-bottom: 20px;
@@ -45,16 +45,16 @@ const GlobalStyles = createGlobalStyle`
 
   h2 {
     font-family: ${props => props.theme.font.secondary};
-    font-size: 16px;
-    line-height: 1;
+    font-size: 18px;
+    line-height: 24px;
     font-weight: 300;
     text-transform: uppercase;
   }
 
   h3 {
     font-family: ${props => props.theme.font.secondary};
-    font-size: 14px;
-    line-height: 1;
+    font-size: 16px;
+    line-height: 22px;
     font-weight: 300;
     text-transform: uppercase;
   }

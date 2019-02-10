@@ -12,7 +12,8 @@ const ProductStyles = styled.header`
   }
 
   .left {
-    flex: 0 0 50%;
+    display: flex;
+    flex: 0 0 60%;
     padding: 0 0 20px 0;
 
     @media (min-width: ${props => props.theme.width.medium}) {
@@ -21,11 +22,33 @@ const ProductStyles = styled.header`
   }
 
   .right {
-    flex: 1 0 50%;
+    flex: 1 0 40%;
 
     @media (min-width: ${props => props.theme.width.medium}) {
       padding: 0 0 0 10px;
     }
+  }
+
+  .gallery {
+    width: 50px;
+    margin-right: 5px;
+  }
+
+  .gallery {
+  }
+
+  .gallery-image-container {
+    margin-bottom: 4px;
+    border: 1px solid white;
+    cursor: pointer;
+  }
+
+  .gallery-image {
+    height: 70px;
+  }
+
+  .viewer {
+    width: 100%;
   }
 
   .description {

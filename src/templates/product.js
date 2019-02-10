@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { graphql } from 'gatsby'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import Img from 'gatsby-image'
 
 import Layout from '../components/layout'
@@ -10,22 +11,48 @@ import ProductStyles from './styles/productStyles'
 const Product = ({ data: { contentfulProduct: product } }) => {
   const rightRef = useRef()
   const [rightFixed, setRightFixed] = useState(false)
+  const [activeImage, setActiveImage] = useState(product.images[0])
+
+  const animationDuration = 300
+
+  const handleClick = event => {
+    setActiveImage(product.images[event.currentTarget.id])
+  }
 
   return (
     <Layout>
       <SEO title={product.name} keywords={[`All Our Former Selves`]} />
-      <ProductStyles rightFixed={rightFixed}>
+      <ProductStyles rightFixed={rightFixed} activeImage={activeImage}>
         <main>
           <h1 className="title">{product.name}</h1>
           <section className="container">
             <div className="left">
-              {product.images.map(node => (
-                <Img
-                  className="image-container"
-                  fluid={node.fluid}
-                  key={node.fluid.src}
-                />
-              ))}
+              <div className="gallery">
+                {product.images.map((node, index) => (
+                  <div
+                    className="gallery-image-container"
+                    onClick={handleClick}
+                    key={node.fluid.src}
+                    id={index}
+                  >
+                    <Img className="gallery-image" fluid={node.fluid} />
+                  </div>
+                ))}
+              </div>
+              <div className="viewer">
+                <TransitionGroup>
+                  <CSSTransition
+                    className="viewer-container"
+                    classNames="mask"
+                    timeout={{
+                      enter: animationDuration,
+                      exit: animationDuration,
+                    }}
+                  >
+                    <Img className="viewer-image" fluid={activeImage.fluid} />
+                  </CSSTransition>
+                </TransitionGroup>
+              </div>
             </div>
             <div className="right">
               <div className="right__container" ref={rightRef}>

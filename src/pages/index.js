@@ -12,16 +12,26 @@ const IndexPage = ({ data }) => {
     <Layout>
       <SEO />
       <IndexStyles>
+        <Img
+          fluid={data.contentfulAsset.fluid}
+          imgStyle={{ objectPosition: 'center top' }}
+          className="hero"
+        />
         <ul>
           {data.allContentfulProduct.edges.map(({ node }, index) => (
             <li key={`${index} – ${node.name}`}>
               <Link to={node.slug}>
-                <Img
-                  fluid={node.images[0].fluid}
-                  className="image-container"
-                  imgStyle={{ objectPosition: 'center top' }}
-                  alt={node.name}
-                />
+                <figure>
+                  <Img
+                    fluid={node.thumbnail.fluid}
+                    className="thumbnail"
+                    alt={node.name}
+                  />
+                  <figcaption>
+                    <h3>{node.name}</h3>
+                    <p>${node.price}</p>
+                  </figcaption>
+                </figure>
               </Link>
             </li>
           ))}
@@ -35,13 +45,18 @@ export default IndexPage
 
 export const ProductsQuery = graphql`
   query {
+    contentfulAsset(title: { regex: "/33/" }) {
+      fluid(maxWidth: 1000) {
+        ...GatsbyContentfulFluid_noBase64
+      }
+    }
     allContentfulProduct {
       edges {
         node {
-          id
           name
+          price
           slug
-          images {
+          thumbnail {
             fluid(maxWidth: 1300) {
               ...GatsbyContentfulFluid_noBase64
             }
