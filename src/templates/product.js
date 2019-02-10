@@ -11,24 +11,6 @@ const Product = ({ data: { contentfulProduct: product } }) => {
   const rightRef = useRef()
   const [rightFixed, setRightFixed] = useState(false)
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-
-    return function removeListener() {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
-
-  const handleScroll = event => {
-    const desktop = window.innerWidth >= 800
-    const descriptionHeight = rightRef.current.getBoundingClientRect().top
-    if (desktop && window.pageYOffset >= descriptionHeight) {
-      setRightFixed(true)
-    } else {
-      setRightFixed(false)
-    }
-  }
-
   return (
     <Layout>
       <SEO title={product.name} keywords={[`All Our Former Selves`]} />
@@ -60,6 +42,7 @@ const Product = ({ data: { contentfulProduct: product } }) => {
                       <li
                         className="colors__block"
                         style={{ backgroundColor: node }}
+                        key={node}
                       />
                     ))}
                   </ul>
@@ -68,7 +51,9 @@ const Product = ({ data: { contentfulProduct: product } }) => {
                   <h3 className="title">Sizes</h3>
                   <ul className="list sizes">
                     {product.sizes.map(node => (
-                      <li className="sizes__block">{node}</li>
+                      <li className="sizes__block" key={node}>
+                        {node}
+                      </li>
                     ))}
                   </ul>
                 </div>

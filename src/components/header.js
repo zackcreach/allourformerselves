@@ -9,18 +9,6 @@ import logo from '../images/logo--black.svg'
 const Header = ({ siteTitle, containerRef, containerHeight }) => {
   const [headerFixed, setHeaderFixed] = useState(false)
 
-  // useEffect(
-  //   () => {
-  //     const layout = document.querySelector(`[class^=layoutStyles]`)
-  //     if (headerFixed) {
-  //       layout.style.paddingTop = containerHeight
-  //     } else {
-  //       layout.removeAttribute('style')
-  //     }
-  //   },
-  //   [headerFixed]
-  // )
-
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)
   }, [])

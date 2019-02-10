@@ -32,7 +32,7 @@ const MenuStyles = styled.div`
 
   .mask {
     position: fixed;
-    top: ${props => props.containerRef || '100%'};
+    top: ${props => props.containerHeight || '100%'};
     right: 0;
     bottom: 0;
     left: 0;
