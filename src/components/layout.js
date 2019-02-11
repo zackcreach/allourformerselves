@@ -27,24 +27,9 @@ const Layout = ({ children }) => {
   const [containerHeight, setContainerHeight] = useState('')
   const containerRef = useRef()
 
-  // useEffect(() => {
-  //   window.addEventListener('resize', recalculateHeaderHeight)
-  // }, [])
-
-  useEffect(
-    () => {
-      setContainerHeight(`${containerRef.current.offsetHeight - 1}px`)
-    },
-    [containerRef.current]
-  )
-
-  let resizeTimer
-  const recalculateHeaderHeight = () => {
-    clearTimeout(resizeTimer)
-    resizeTimer = setTimeout(() => {
-      setContainerHeight(`${containerRef.current.offsetHeight - 1}px`)
-    }, 250)
-  }
+  useEffect(() => {
+    setContainerHeight(`${containerRef.current.offsetHeight - 1}px`)
+  }, [containerRef.current])
 
   return (
     <StaticQuery

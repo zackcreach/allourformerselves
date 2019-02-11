@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import { graphql } from 'gatsby'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import Img from 'gatsby-image'
@@ -10,7 +10,6 @@ import ProductStyles from './styles/productStyles'
 
 const Product = ({ data: { contentfulProduct: product } }) => {
   const rightRef = useRef()
-  const [rightFixed, setRightFixed] = useState(false)
   const [activeImage, setActiveImage] = useState(product.images[0])
 
   const animationDuration = 300
@@ -22,7 +21,7 @@ const Product = ({ data: { contentfulProduct: product } }) => {
   return (
     <Layout>
       <SEO title={product.name} keywords={[`All Our Former Selves`]} />
-      <ProductStyles rightFixed={rightFixed} activeImage={activeImage}>
+      <ProductStyles activeImage={activeImage}>
         <main>
           <h1 className="title">{product.name}</h1>
           <section className="container">
