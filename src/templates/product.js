@@ -3,7 +3,6 @@ import { graphql } from 'gatsby'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import Img from 'gatsby-image'
 
-import Layout from '../components/layout'
 import SEO from '../components/seo'
 
 import ProductStyles from './styles/productStyles'
@@ -19,7 +18,7 @@ const Product = ({ data: { contentfulProduct: product } }) => {
   }
 
   return (
-    <Layout>
+    <>
       <SEO title={product.name} keywords={[`All Our Former Selves`]} />
       <ProductStyles activeImage={activeImage}>
         <main>
@@ -88,7 +87,7 @@ const Product = ({ data: { contentfulProduct: product } }) => {
           </section>
         </main>
       </ProductStyles>
-    </Layout>
+    </>
   )
 }
 

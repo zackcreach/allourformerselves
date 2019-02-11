@@ -2,14 +2,13 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
-import Layout from '../components/layout'
 import SEO from '../components/seo'
 
 import IndexStyles from './styles/indexStyles'
 
 const IndexPage = ({ data }) => {
   return (
-    <Layout>
+    <>
       <SEO />
       <IndexStyles>
         <Img
@@ -37,7 +36,7 @@ const IndexPage = ({ data }) => {
           ))}
         </ul>
       </IndexStyles>
-    </Layout>
+    </>
   )
 }
 
