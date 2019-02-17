@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const ProductStyles = styled.header`
   .container {
-    @media (min-width: 800px) {
+    @media (min-width: ${props => props.theme.width.medium}) {
       display: flex;
     }
   }
@@ -16,7 +16,7 @@ const ProductStyles = styled.header`
     flex: 0 0 60%;
     padding: 0 0 20px 0;
 
-    @media (min-width: 800px) {
+    @media (min-width: ${props => props.theme.width.medium}) {
       padding: 0 10px 0 0;
     }
   }
@@ -24,7 +24,7 @@ const ProductStyles = styled.header`
   .right {
     flex: 1 0 40%;
 
-    @media (min-width: 800px) {
+    @media (min-width: ${props => props.theme.width.medium}) {
       padding: 0 0 0 10px;
     }
   }

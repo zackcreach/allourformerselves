@@ -13,8 +13,9 @@ const IndexStyles = styled.div`
     display: flex;
     flex-wrap: wrap;
 
-    @media (min-width: 800px) {
+    @media (min-width: ${props => props.theme.width.medium}) {
       flex-wrap: nowrap;
+      padding: 0 20px;
     }
   }
 
@@ -23,7 +24,7 @@ const IndexStyles = styled.div`
     text-align: center;
     width: 100%;
 
-    @media (min-width: 800px) {
+    @media (min-width: ${props => props.theme.width.medium}) {
       width: 50%;
     }
   }
@@ -41,7 +42,7 @@ const IndexStyles = styled.div`
   .thumbnail {
     height: 100vw;
 
-    @media (min-width: 800px) {
+    @media (min-width: ${props => props.theme.width.medium}) {
       height: 25vw;
     }
   }

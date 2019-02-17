@@ -65,7 +65,7 @@ const MenuStyles = styled.div`
     width: 100%;
     background: #111;
 
-    @media (min-width: 800px) {
+    @media (min-width: ${props => props.theme.width.medium}) {
       width: 300px;
     }
   }
