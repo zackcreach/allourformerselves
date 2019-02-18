@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { graphql } from 'gatsby'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import Img from 'gatsby-image'
@@ -9,12 +9,19 @@ import ProductStyles from './styles/productStyles'
 
 const Product = ({ data: { contentfulProduct: product } }) => {
   const rightRef = useRef()
+  const [activeUrl, setActiveUrl] = useState(
+    `https://allourformerselves.com/${product.slug}`
+  )
   const [activeImage, setActiveImage] = useState(product.images[0])
   const [activeSize, setActiveSize] = useState(product.sizes[0])
   const [activeColor, setActiveColor] = useState(product.colors[0])
   const [activeQuantity, setActiveQuantity] = useState(1)
 
   const animationDuration = 300
+
+  useEffect(() => {
+    setActiveUrl(window.location.href)
+  }, [])
 
   const handleClick = event => {
     if (event.target.tagName === 'IMG') {
@@ -120,7 +127,7 @@ const Product = ({ data: { contentfulProduct: product } }) => {
                     data-item-id={product.id}
                     data-item-name={product.name}
                     data-item-price={product.price}
-                    data-item-url={window.location.href}
+                    data-item-url={activeUrl}
                     data-item-description={`${activeColor} / ${activeSize}`}
                     data-item-quantity={activeQuantity}
                     data-item-metadata={JSON.stringify({
