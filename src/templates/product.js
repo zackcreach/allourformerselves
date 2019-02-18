@@ -44,7 +44,6 @@ const Product = ({ data: { contentfulProduct: product } }) => {
       <SEO title={product.name} keywords={[`All Our Former Selves`]} />
       <ProductStyles activeImage={activeImage}>
         <main>
-          <h1 className="title">{product.name}</h1>
           <section className="container">
             <div className="left">
               <div className="gallery">
@@ -76,6 +75,7 @@ const Product = ({ data: { contentfulProduct: product } }) => {
             </div>
             <div className="right">
               <div className="right__container" ref={rightRef}>
+                <h1 className="title">{product.name}</h1>
                 <p
                   className="description"
                   dangerouslySetInnerHTML={{
@@ -130,10 +130,12 @@ const Product = ({ data: { contentfulProduct: product } }) => {
                     data-item-url={activeUrl}
                     data-item-description={`${activeColor} / ${activeSize}`}
                     data-item-quantity={activeQuantity}
-                    data-item-metadata={JSON.stringify({
-                      color: activeColor,
-                      size: activeSize,
-                    })}
+                    data-item-custom1-name="Size"
+                    data-item-custom1-options={product.sizes.join('|')}
+                    data-item-custom1-value={activeSize}
+                    data-item-custom2-name="Color"
+                    data-item-custom2-options={product.colors.join('|')}
+                    data-item-custom2-value={activeColor}
                     type="button"
                   >
                     Add to Cart
