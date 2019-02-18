@@ -10,11 +10,26 @@ import ProductStyles from './styles/productStyles'
 const Product = ({ data: { contentfulProduct: product } }) => {
   const rightRef = useRef()
   const [activeImage, setActiveImage] = useState(product.images[0])
+  const [activeSize, setActiveSize] = useState(product.sizes[0])
+  const [activeColor, setActiveColor] = useState(product.colors[0])
+  const [activeQuantity, setActiveQuantity] = useState(1)
 
   const animationDuration = 300
 
   const handleClick = event => {
-    setActiveImage(product.images[event.currentTarget.id])
+    if (event.target.tagName === 'IMG') {
+      setActiveImage(product.images[event.currentTarget.id])
+    }
+    if (event.target.className === 'colors__block') {
+      setActiveColor(product.colors[event.target.id])
+    }
+    if (event.target.className === 'sizes__block') {
+      setActiveSize(product.sizes[event.target.id])
+    }
+  }
+
+  const handleChange = event => {
+    setActiveQuantity(event.target.value)
   }
 
   return (
@@ -62,26 +77,61 @@ const Product = ({ data: { contentfulProduct: product } }) => {
                 />
                 <div className="options">
                   <h3 className="title">Colors</h3>
-                  <ul className="list colors">
-                    {product.colors.map(node => (
+                  <ul className="list colors" onClick={handleClick}>
+                    {product.colors.map((node, index) => (
                       <li
                         className="colors__block"
-                        style={{ backgroundColor: node }}
+                        style={{
+                          backgroundColor: node,
+                          borderColor: activeColor === node && 'black',
+                        }}
                         key={node}
+                        id={index}
                       />
                     ))}
                   </ul>
                 </div>
                 <div className="options">
                   <h3 className="title">Sizes</h3>
-                  <ul className="list sizes">
-                    {product.sizes.map(node => (
-                      <li className="sizes__block" key={node}>
+                  <ul className="list sizes" onClick={handleClick}>
+                    {product.sizes.map((node, index) => (
+                      <li
+                        className="sizes__block"
+                        key={node}
+                        id={index}
+                        style={{
+                          borderColor: activeSize === node && 'black',
+                          color: activeSize === node && 'black',
+                        }}
+                      >
                         {node}
                       </li>
                     ))}
                   </ul>
                 </div>
+                <form>
+                  {/* <input
+                    type="text"
+                    value={activeQuantity}
+                    onChange={handleChange}
+                  /> */}
+                  <button
+                    className="snipcart-add-item"
+                    data-item-id={product.id}
+                    data-item-name={product.name}
+                    data-item-price={product.price}
+                    data-item-url={window.location.href}
+                    data-item-description={`${activeColor} / ${activeSize}`}
+                    data-item-quantity={activeQuantity}
+                    data-item-metadata={JSON.stringify({
+                      color: activeColor,
+                      size: activeSize,
+                    })}
+                    type="button"
+                  >
+                    Add to Cart
+                  </button>
+                </form>
               </div>
             </div>
           </section>

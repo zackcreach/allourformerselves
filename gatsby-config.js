@@ -16,6 +16,13 @@ module.exports = {
         accessToken: process.env.CF_ACCESS_TOKEN,
       },
     },
+    {
+      resolve: `gatsby-plugin-snipcart`,
+      options: {
+        apiKey: process.env.SC_API_KEY,
+        autopop: true,
+      },
+    },
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
     {

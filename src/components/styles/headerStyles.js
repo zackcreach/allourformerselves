@@ -21,6 +21,14 @@ const HeaderStyles = styled.header`
     justify-self: center;
     margin: 20px 0;
   }
+
+  .snipcart-checkout {
+    position: absolute;
+    width: 28px;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 `
 
 export default HeaderStyles

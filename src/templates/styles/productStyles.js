@@ -82,6 +82,7 @@ const ProductStyles = styled.header`
     height: 30px;
     margin-right: 6px;
     border: 1px solid ${props => props.theme.color.secondary};
+    transition: all 0.25s ease;
   }
 
   .sizes {
@@ -96,6 +97,30 @@ const ProductStyles = styled.header`
     font-weight: 300;
     color: ${props => props.theme.color.secondary};
     border: 1px solid ${props => props.theme.color.secondary};
+    transition: all 0.25s ease;
+  }
+
+  input {
+    width: 30px;
+    height: 30px;
+    border: 1px solid ${props => props.theme.color.secondary};
+    text-align: center;
+    margin-right: 6px;
+  }
+
+  button {
+    width: 200px;
+    background-color: ${props => props.theme.color.primary};
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    height: 35px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  button:hover {
+    background-color: black;
   }
 `
 
