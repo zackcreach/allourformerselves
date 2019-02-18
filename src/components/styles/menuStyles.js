@@ -10,18 +10,18 @@ const MenuStyles = styled.div`
     top: 50%;
     left: 30px;
     transform: translate3d(0, -50%, 0);
-    border-top: 1.5px solid ${props => props.theme.color.secondary};
-    border-bottom: 1.5px solid ${props => props.theme.color.secondary};
+    border-top: 1px solid ${props => props.theme.color.primary};
+    border-bottom: 1px solid ${props => props.theme.color.primary};
     cursor: pointer;
 
     &::after {
       position: absolute;
       content: '';
-      height: 1.5px;
+      height: 1px;
       top: 50%;
       width: 100%;
       transform: translate3d(0, -50%, 0);
-      background-color: ${props => props.theme.color.secondary};
+      background-color: ${props => props.theme.color.primary};
     }
   }
 

@@ -9,20 +9,8 @@ import logo from '../images/logo--black.svg'
 const Header = ({ siteTitle, containerRef, containerHeight }) => {
   const [headerFixed, setHeaderFixed] = useState(false)
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-  }, [])
-
-  const handleScroll = () => {
-    if (window.pageYOffset > 1) {
-      setHeaderFixed(true)
-    } else {
-      setHeaderFixed(false)
-    }
-  }
-
   return (
-    <HeaderStyles headerFixed={headerFixed}>
+    <HeaderStyles>
       <div className="container" ref={containerRef}>
         <Menu containerHeight={containerHeight} />
         <Link className="logo-link" to="/">

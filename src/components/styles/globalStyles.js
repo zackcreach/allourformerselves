@@ -29,7 +29,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   main {
-    padding: 40px 20px;
+    padding: 40px 30px;
     margin: 0 auto;
     max-width: 1240px;
   }

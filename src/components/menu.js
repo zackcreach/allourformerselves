@@ -16,6 +16,11 @@ const Menu = ({ siteTitle, containerHeight }) => {
 
   useEffect(() => {
     window.addEventListener('click', handleClick)
+
+    return () => {
+      window.removeEventListener('click', handleClick)
+      setShowMenu(false)
+    }
   }, [])
 
   const handleClick = event => {
@@ -28,6 +33,9 @@ const Menu = ({ siteTitle, containerHeight }) => {
       event.target.parentElement !== mainRef.current
     ) {
       setShowMenu(prevMenu => (prevMenu ? !prevMenu : prevMenu))
+    }
+    if (event.target.tagName === 'A') {
+      setShowMenu(false)
     }
   }
 

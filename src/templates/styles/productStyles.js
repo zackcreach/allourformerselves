@@ -4,6 +4,7 @@ const ProductStyles = styled.header`
   .container {
     @media (min-width: ${props => props.theme.width.medium}) {
       display: flex;
+      align-items: flex-start;
     }
   }
 
@@ -14,10 +15,10 @@ const ProductStyles = styled.header`
   .left {
     display: flex;
     flex: 0 0 60%;
-    padding: 0 0 20px 0;
+    padding: 0 0 30px 0;
 
     @media (min-width: ${props => props.theme.width.medium}) {
-      padding: 0 10px 0 0;
+      padding: 0 15px 0 0;
     }
   }
 
@@ -25,21 +26,21 @@ const ProductStyles = styled.header`
     flex: 1 0 40%;
 
     @media (min-width: ${props => props.theme.width.medium}) {
-      padding: 0 0 0 10px;
+      padding: 0 0 0 15px;
     }
   }
 
   .gallery {
     width: 50px;
-    margin-right: 5px;
-  }
+    margin-right: 15px;
+    background-color: #f3f3f3;
 
-  .gallery {
+    @media (min-width: ${props => props.theme.width.medium}) {
+      background-color: transparent;
+    }
   }
 
   .gallery-image-container {
-    margin-bottom: 4px;
-    border: 1px solid white;
     cursor: pointer;
   }
 
@@ -52,7 +53,7 @@ const ProductStyles = styled.header`
   }
 
   .description {
-    padding-bottom: 30px;
+    padding-bottom: 18px;
   }
 
   .options {
@@ -70,7 +71,12 @@ const ProductStyles = styled.header`
     cursor: pointer;
   }
 
-  .title {
+  h1 {
+    padding-bottom: 20px;
+    margin-top: -5px;
+  }
+
+  h3 {
     padding-bottom: 14px;
   }
 
@@ -109,7 +115,12 @@ const ProductStyles = styled.header`
   }
 
   button {
-    width: 200px;
+    font-family: ${props => props.theme.font.secondary};
+    font-weight: 300;
+    font-size: 14.5px;
+    padding-bottom: 2px;
+    margin-top: 10px;
+    width: 100%;
     background-color: ${props => props.theme.color.primary};
     color: white;
     text-transform: uppercase;
@@ -117,6 +128,10 @@ const ProductStyles = styled.header`
     height: 35px;
     cursor: pointer;
     transition: all 0.25s ease;
+
+    @media (min-width: ${props => props.theme.width.small}) {
+      width: 200px;
+    }
   }
 
   button:hover {
