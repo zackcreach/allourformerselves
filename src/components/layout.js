@@ -13,8 +13,8 @@ const theme = {
     secondary: '#999',
   },
   font: {
-    primary: 'Roboto, Helvetica, Arial, sans-serif',
-    secondary: 'Roboto Condensed, Helvetica, sans-serif',
+    primary: 'IBM Plex Sans, Helvetica, Arial, sans-serif',
+    secondary: 'IBM Plex Sans, Helvetica, sans-serif',
   },
   width: {
     small: '400px',
