@@ -128,7 +128,6 @@ const Product = ({ data: { contentfulProduct: product } }) => {
                     data-item-name={product.name}
                     data-item-price={product.price}
                     data-item-url={activeUrl}
-                    data-item-description={`${activeColor} / ${activeSize}`}
                     data-item-quantity={activeQuantity}
                     data-item-custom1-name="Size"
                     data-item-custom1-options={product.sizes.join('|')}

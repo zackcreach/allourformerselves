@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
-import favicon from '../../src/images/favicon.png'
 
 function SEO({ description, lang, meta, keywords, title }) {
   return (
@@ -62,9 +61,7 @@ function SEO({ description, lang, meta, keywords, title }) {
                   : []
               )
               .concat(meta)}
-          >
-            <link rel="shortcut icon" href={favicon} />
-          </Helmet>
+          />
         )
       }}
     />

@@ -1,7 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { StaticQuery, graphql } from 'gatsby'
+import Helmet from 'react-helmet'
+import { StaticQuery, graphql, withPrefix } from 'gatsby'
 import { ThemeProvider } from 'styled-components'
+
+import favicon from '../../src/images/favicon.png'
 
 import Header from './header'
 import GlobalStyles from './styles/globalStyles'
@@ -45,6 +48,19 @@ const Layout = ({ children }) => {
       render={data => (
         <ThemeProvider theme={theme}>
           <>
+            <Helmet
+              link={[
+                {
+                  href: withPrefix('/snipcart/snipcart.css'),
+                  rel: 'stylesheet',
+                  type: 'text/css',
+                },
+                {
+                  href: favicon,
+                  rel: 'shortcut icon',
+                },
+              ]}
+            />
             <GlobalStyles />
             <Header
               containerRef={containerRef}

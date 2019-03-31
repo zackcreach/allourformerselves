@@ -117,7 +117,7 @@ const ProductStyles = styled.header`
   button {
     font-family: ${props => props.theme.font.secondary};
     font-weight: 300;
-    font-size: 14.5px;
+    font-size: 12px;
     padding-bottom: 2px;
     margin-top: 10px;
     width: 100%;
@@ -125,12 +125,12 @@ const ProductStyles = styled.header`
     color: white;
     text-transform: uppercase;
     border: none;
-    height: 35px;
+    height: 36px;
     cursor: pointer;
     transition: all 0.25s ease;
 
     @media (min-width: ${props => props.theme.width.small}) {
-      width: 200px;
+      width: 140px;
     }
   }
 

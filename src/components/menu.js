@@ -77,7 +77,7 @@ const Menu = ({ siteTitle, containerHeight }) => {
 
 Menu.propTypes = {
   siteTitle: PropTypes.string,
-  containerHeight: PropTypes.object,
+  containerHeight: PropTypes.string,
 }
 
 Menu.defaultProps = {
