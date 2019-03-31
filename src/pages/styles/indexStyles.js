@@ -14,18 +14,17 @@ const IndexStyles = styled.div`
     flex-wrap: wrap;
 
     @media (min-width: ${props => props.theme.width.medium}) {
-      flex-wrap: nowrap;
       padding: 0 20px;
     }
   }
 
   li {
-    margin: 20px;
+    padding: 20px;
     text-align: center;
-    width: 100%;
+    flex: 0 0 100%;
 
     @media (min-width: ${props => props.theme.width.medium}) {
-      width: 50%;
+      flex: 0 1 25%;
     }
   }
 

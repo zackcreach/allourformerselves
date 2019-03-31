@@ -15,7 +15,6 @@ const Product = ({ data: { contentfulProduct: product } }) => {
   const [activeImage, setActiveImage] = useState(product.images[0])
   const [activeSize, setActiveSize] = useState(product.sizes[0])
   const [activeColor, setActiveColor] = useState(product.colors[0])
-  const [activeQuantity, setActiveQuantity] = useState(1)
 
   const animationDuration = 300
 
@@ -33,10 +32,6 @@ const Product = ({ data: { contentfulProduct: product } }) => {
     if (event.target.className === 'sizes__block') {
       setActiveSize(product.sizes[event.target.id])
     }
-  }
-
-  const handleChange = event => {
-    setActiveQuantity(event.target.value)
   }
 
   return (
@@ -117,18 +112,13 @@ const Product = ({ data: { contentfulProduct: product } }) => {
                   </ul>
                 </div>
                 <form>
-                  {/* <input
-                    type="text"
-                    value={activeQuantity}
-                    onChange={handleChange}
-                  /> */}
+                  <p>${product.price}</p>
                   <button
                     className="snipcart-add-item"
                     data-item-id={product.id}
                     data-item-name={product.name}
                     data-item-price={product.price}
                     data-item-url={activeUrl}
-                    data-item-quantity={activeQuantity}
                     data-item-custom1-name="Size"
                     data-item-custom1-options={product.sizes.join('|')}
                     data-item-custom1-value={activeSize}
@@ -160,7 +150,7 @@ export const productQuery = graphql`
       }
       price
       images {
-        fluid(maxWidth: 400) {
+        fluid(maxWidth: 600) {
           ...GatsbyContentfulFluid
         }
       }

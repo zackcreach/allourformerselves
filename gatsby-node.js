@@ -41,6 +41,18 @@ exports.createPages = ({ graphql, actions }) => {
             })
           }
         })
+        // result.data.allContentfulPage.edges.map(({ node }) => {
+        //   if (currentProducts.indexOf(node.slug) === -1) {
+        //     console.log(`Creating new static page: ${node.slug}`)
+        //     createPage({
+        //       path: `${node.slug}`,
+        //       component: path.resolve('./src/templates/page.js'),
+        //       context: {
+        //         slug: node.slug,
+        //       },
+        //     })
+        //   }
+        // })
       })
       .catch(error => console.error(error))
     resolve()

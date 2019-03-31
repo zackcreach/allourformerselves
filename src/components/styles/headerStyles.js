@@ -17,9 +17,9 @@ const HeaderStyles = styled.header`
   }
 
   .logo {
-    width: 110px;
+    width: 115px;
     justify-self: center;
-    margin: 20px 0;
+    margin: 18.5px 0;
   }
 
   .snipcart-checkout {

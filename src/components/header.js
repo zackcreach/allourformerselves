@@ -1,14 +1,12 @@
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 import HeaderStyles from './styles/headerStyles'
 import Menu from './menu'
 import logo from '../images/logo--black.svg'
 
 const Header = ({ siteTitle, containerRef, containerHeight }) => {
-  const [headerFixed, setHeaderFixed] = useState(false)
-
   return (
     <HeaderStyles>
       <div className="container" ref={containerRef}>
@@ -16,7 +14,7 @@ const Header = ({ siteTitle, containerRef, containerHeight }) => {
         <Link className="logo-link" to="/">
           <img className="logo" src={logo} alt="All Our Former Selves logo" />
         </Link>
-        <a href="#" className="snipcart-checkout">
+        <a href="#0" className="snipcart-checkout">
           <svg viewBox="0 0 24 22" version="1.1" x="0px" y="0px">
             <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
               <path

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const ProductStyles = styled.header`
+const PageStyles = styled.header`
   .container {
     @media (min-width: ${props => props.theme.width.medium}) {
       display: flex;
@@ -106,15 +106,12 @@ const ProductStyles = styled.header`
     transition: all 0.25s ease;
   }
 
-  form {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-  }
-
-  form p {
-    line-height: 10px;
-    padding: 0 15px 0 0;
+  input {
+    width: 30px;
+    height: 30px;
+    border: 1px solid ${props => props.theme.color.secondary};
+    text-align: center;
+    margin-right: 6px;
   }
 
   button {
@@ -122,6 +119,7 @@ const ProductStyles = styled.header`
     font-weight: 300;
     font-size: 12px;
     padding-bottom: 2px;
+    margin-top: 10px;
     width: 100%;
     background-color: ${props => props.theme.color.primary};
     color: white;
