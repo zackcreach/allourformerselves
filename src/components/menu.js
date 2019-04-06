@@ -75,7 +75,7 @@ const Menu = ({ siteTitle, containerHeight }) => {
           >
             <main ref={mainRef}>
               {data.allContentfulPage.edges
-                .sort((a, b) => a.node.title - b.node.title)
+                .sort((a, b) => b.node.title - a.node.title)
                 .map(({ node }) => (
                   <Link to={node.slug} key={node.title}>
                     {node.title}

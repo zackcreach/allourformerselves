@@ -9,7 +9,7 @@ const PageStyles = styled.header`
   }
 
   h1 {
-    padding-bottom: 20px;
+    padding-bottom: 25px;
   }
 
   h1 + h2 {
