@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const PageStyles = styled.header`
+const InfoStyles = styled.div`
   .container {
     @media (min-width: 800px) {
       display: flex;
@@ -30,4 +30,4 @@ const PageStyles = styled.header`
   }
 `
 
-export default PageStyles
+export default InfoStyles

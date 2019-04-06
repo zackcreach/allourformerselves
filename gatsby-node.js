@@ -42,10 +42,10 @@ exports.createPages = ({ graphql, actions }) => {
         // directory already using indexOf() to check if it's in the array
         result.data.allContentfulPage.edges.map(({ node }) => {
           if (currentPages.indexOf(node.slug) === -1) {
-            console.log(`Creating new page view: ${node.slug}`)
+            console.log(`Creating new info view: ${node.slug}`)
             createPage({
               path: `${node.slug}`,
-              component: path.resolve('./src/templates/page.js'),
+              component: path.resolve('./src/templates/info.js'),
               context: {
                 slug: node.slug,
               },

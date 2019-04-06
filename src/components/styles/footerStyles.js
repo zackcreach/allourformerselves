@@ -1,5 +1,5 @@
 import styled from 'styled-components'
 
-const FooterStyles = styled.header``
+const FooterStyles = styled.footer``
 
 export default FooterStyles

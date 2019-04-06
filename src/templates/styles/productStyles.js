@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const ProductStyles = styled.header`
+const ProductStyles = styled.div`
   .container {
     @media (min-width: 800px) {
       display: flex;

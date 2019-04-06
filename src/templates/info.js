@@ -3,28 +3,28 @@ import { graphql } from 'gatsby'
 
 import SEO from '../components/seo'
 
-import PageStyles from './styles/pageStyles'
+import InfoStyles from './styles/infoStyles'
 
-const Page = ({ data }) => {
+const Info = ({ data: { contentfulPage: page } }) => {
   return (
     <>
       <SEO />
-      <PageStyles>
+      <InfoStyles>
         <main>
           <p
             dangerouslySetInnerHTML={{
-              __html: data.contentfulPage.content.childMarkdownRemark.html,
+              __html: page.content.childMarkdownRemark.html,
             }}
           />
         </main>
-      </PageStyles>
+      </InfoStyles>
     </>
   )
 }
 
-export default Page
+export default Info
 
-export const pageQuery = graphql`
+export const infoQuery = graphql`
   query pageData($slug: String!) {
     contentfulPage(slug: { eq: $slug }) {
       title
