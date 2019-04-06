@@ -45,7 +45,7 @@ exports.createPages = ({ graphql, actions }) => {
             console.log(`Creating new info view: ${node.slug}`)
             createPage({
               path: `${node.slug}`,
-              component: path.resolve('./src/templates/info.js'),
+              component: path.resolve('./src/templates/page.js'),
               context: {
                 slug: node.slug,
               },

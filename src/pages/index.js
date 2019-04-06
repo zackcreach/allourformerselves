@@ -2,13 +2,14 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
+import Layout from '../components/layout'
 import SEO from '../components/seo'
 
 import IndexStyles from './styles/indexStyles'
 
 const IndexPage = ({ data }) => {
   return (
-    <>
+    <Layout>
       <SEO />
       <IndexStyles>
         <Img
@@ -16,27 +17,29 @@ const IndexPage = ({ data }) => {
           imgStyle={{ objectPosition: 'center top' }}
           className="hero"
         />
-        <ul>
-          {data.allContentfulProduct.edges.map(({ node }, index) => (
-            <li key={`${index} – ${node.name}`}>
-              <Link to={node.slug}>
-                <figure>
-                  <Img
-                    fluid={node.thumbnail.fluid}
-                    className="thumbnail"
-                    alt={node.name}
-                  />
-                  <figcaption>
-                    <h3>{node.name}</h3>
-                    <p>${node.price}</p>
-                  </figcaption>
-                </figure>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <main>
+          <ul>
+            {data.allContentfulProduct.edges.map(({ node }, index) => (
+              <li key={`${index} – ${node.name}`}>
+                <Link to={node.slug}>
+                  <figure>
+                    <Img
+                      fluid={node.thumbnail.fluid}
+                      className="thumbnail"
+                      alt={node.name}
+                    />
+                    <figcaption>
+                      <h3>{node.name}</h3>
+                      <p>${node.price}</p>
+                    </figcaption>
+                  </figure>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </main>
       </IndexStyles>
-    </>
+    </Layout>
   )
 }
 

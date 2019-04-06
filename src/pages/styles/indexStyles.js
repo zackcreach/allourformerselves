@@ -3,7 +3,6 @@ import styled from 'styled-components'
 const IndexStyles = styled.div`
   .hero {
     height: calc(100vh - 92px);
-    margin-bottom: 20px;
   }
 
   ul {
@@ -12,10 +11,6 @@ const IndexStyles = styled.div`
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-
-    @media (min-width: 800px) {
-      padding: 0 20px;
-    }
   }
 
   li {
@@ -41,7 +36,7 @@ const IndexStyles = styled.div`
     height: 100vw;
 
     @media (min-width: 800px) {
-      height: 25vw;
+      height: 300px;
     }
   }
 `

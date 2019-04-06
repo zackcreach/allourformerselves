@@ -1,15 +1,16 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
+import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-import InfoStyles from './styles/infoStyles'
+import PageStyles from './styles/pageStyles'
 
-const Info = ({ data: { contentfulPage: page } }) => {
+const Page = ({ data: { contentfulPage: page } }) => {
   return (
-    <>
+    <Layout>
       <SEO />
-      <InfoStyles>
+      <PageStyles>
         <main>
           <p
             dangerouslySetInnerHTML={{
@@ -17,14 +18,14 @@ const Info = ({ data: { contentfulPage: page } }) => {
             }}
           />
         </main>
-      </InfoStyles>
-    </>
+      </PageStyles>
+    </Layout>
   )
 }
 
-export default Info
+export default Page
 
-export const infoQuery = graphql`
+export const pageQuery = graphql`
   query pageData($slug: String!) {
     contentfulPage(slug: { eq: $slug }) {
       title

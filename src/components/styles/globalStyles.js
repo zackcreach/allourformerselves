@@ -32,7 +32,7 @@ const GlobalStyles = createGlobalStyle`
   main {
     padding: 40px 30px;
     margin: 0 auto;
-    max-width: 1240px;
+    max-width: 1200px;
   }
 
   h1 {
