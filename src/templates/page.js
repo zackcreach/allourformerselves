@@ -12,7 +12,7 @@ const Page = ({ data: { contentfulPage: page } }) => {
       <SEO />
       <PageStyles>
         <main>
-          <p
+          <div
             dangerouslySetInnerHTML={{
               __html: page.content.childMarkdownRemark.html,
             }}

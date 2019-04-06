@@ -72,7 +72,7 @@ const Product = ({ data: { contentfulProduct: product } }) => {
             <div className="right">
               <div className="right__container" ref={rightRef}>
                 <h1>{product.name}</h1>
-                <p
+                <div
                   className="description"
                   dangerouslySetInnerHTML={{
                     __html: product.description.childMarkdownRemark.html,
