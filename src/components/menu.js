@@ -15,7 +15,7 @@ const Menu = ({ siteTitle, containerHeight }) => {
 
   const data = useStaticQuery(graphql`
     query PagesQuery {
-      allContentfulPage {
+      allContentfulPage(sort: { fields: title, order: ASC }) {
         edges {
           node {
             title
@@ -74,13 +74,11 @@ const Menu = ({ siteTitle, containerHeight }) => {
             timeout={{ enter: animationDuration, exit: animationDuration }}
           >
             <main ref={mainRef}>
-              {data.allContentfulPage.edges
-                .sort((a, b) => b.node.title - a.node.title)
-                .map(({ node }) => (
-                  <Link to={node.slug} key={node.title}>
-                    {node.title}
-                  </Link>
-                ))}
+              {data.allContentfulPage.edges.map(({ node }) => (
+                <Link to={node.slug} key={node.title}>
+                  {node.title}
+                </Link>
+              ))}
             </main>
           </CSSTransition>
         )}
