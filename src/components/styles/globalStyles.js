@@ -57,7 +57,7 @@ const GlobalStyles = createGlobalStyle`
     text-transform: uppercase;
   }
 
-  p {
+  p, ul {
     font-size: 15px;
     line-height: 23px;
     color: #333;
