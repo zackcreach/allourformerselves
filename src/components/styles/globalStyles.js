@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import '../../../static/fonts/IBMPlexSans.css'
 
 const GlobalStyles = createGlobalStyle`
   html {
@@ -38,22 +39,22 @@ const GlobalStyles = createGlobalStyle`
     font-family: ${props => props.theme.font.secondary};
     font-size: 20px;
     line-height: 28px;
-    font-weight: 300;
+    font-weight: 400;
     text-transform: uppercase;
     padding-bottom: 20px;
   }
 
   h2 {
     font-family: ${props => props.theme.font.secondary};
-    font-size: 18px;
+    font-size: 16px;
     line-height: 24px;
-    font-weight: 300;
+    font-weight: 400;
     text-transform: uppercase;
   }
 
   h3 {
     font-family: ${props => props.theme.font.secondary};
-    font-size: 16px;
+    font-size: 15px;
     line-height: 22px;
     font-weight: 300;
     text-transform: uppercase;
@@ -64,7 +65,7 @@ const GlobalStyles = createGlobalStyle`
     line-height: 23px;
     color: ${props => props.theme.color.primary};
     font-weight: 300;
-    
+    padding-bottom: 20px;
   }
 `
 

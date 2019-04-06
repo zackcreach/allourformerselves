@@ -1,18 +1,30 @@
-import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import React, { useRef, useState, useEffect } from 'react'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 import MenuStyles from './styles/menuStyles'
 
 const Menu = ({ siteTitle, containerHeight }) => {
   const [showMenu, setShowMenu] = useState(false)
-  const links = [{ name: 'Home', link: '/' }, { name: 'About', link: '/about' }]
 
   const mainRef = useRef()
   const figureRef = useRef()
 
   const animationDuration = 300
+
+  const data = useStaticQuery(graphql`
+    query PagesQuery {
+      allContentfulPage {
+        edges {
+          node {
+            title
+            slug
+          }
+        }
+      }
+    }
+  `)
 
   useEffect(() => {
     window.addEventListener('click', handleClick)
@@ -62,11 +74,13 @@ const Menu = ({ siteTitle, containerHeight }) => {
             timeout={{ enter: animationDuration, exit: animationDuration }}
           >
             <main ref={mainRef}>
-              {links.map(node => (
-                <Link to={node.link} key={node.name}>
-                  {node.name}
-                </Link>
-              ))}
+              {data.allContentfulPage.edges
+                .sort((a, b) => a.node.title - b.node.title)
+                .map(({ node }) => (
+                  <Link to={node.slug} key={node.title}>
+                    {node.title}
+                  </Link>
+                ))}
             </main>
           </CSSTransition>
         )}

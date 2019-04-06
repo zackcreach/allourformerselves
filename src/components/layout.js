@@ -16,8 +16,8 @@ const theme = {
     secondary: '#999',
   },
   font: {
-    primary: 'IBM Plex Sans, Helvetica, Arial, sans-serif',
-    secondary: 'IBM Plex Sans, Helvetica, sans-serif',
+    primary: `'IBM Plex Sans', Helvetica, Arial, sans-serif`,
+    secondary: `'IBM Plex Sans', Helvetica, sans-serif`,
   },
   width: {
     small: '400px',

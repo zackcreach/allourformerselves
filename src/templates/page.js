@@ -1,41 +1,38 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
-import { TransitionGroup, CSSTransition } from 'react-transition-group'
-import Img from 'gatsby-image'
 
 import SEO from '../components/seo'
 
 import PageStyles from './styles/pageStyles'
 
-const Page = ({ data: { contentfulPage: page } }) => {
+const Page = ({ data }) => {
   return (
     <>
-      <SEO title={page.name} keywords={[`All Our Former Selves`]} />
+      <SEO />
       <PageStyles>
         <main>
-          <section className="container">
-            <p
-              className="description"
-              dangerouslySetInnerHTML={{
-                __html: page.content.content,
-              }}
-            />
-          </section>
+          <p
+            dangerouslySetInnerHTML={{
+              __html: data.contentfulPage.content.childMarkdownRemark.html,
+            }}
+          />
         </main>
       </PageStyles>
     </>
   )
 }
 
+export default Page
+
 export const pageQuery = graphql`
   query pageData($slug: String!) {
     contentfulPage(slug: { eq: $slug }) {
-      id
+      title
       content {
-        content
+        childMarkdownRemark {
+          html
+        }
       }
     }
   }
 `
-
-export default Product

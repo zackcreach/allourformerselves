@@ -74,7 +74,7 @@ const Product = ({ data: { contentfulProduct: product } }) => {
                 <p
                   className="description"
                   dangerouslySetInnerHTML={{
-                    __html: product.description.description,
+                    __html: product.description.childMarkdownRemark.html,
                   }}
                 />
                 <div className="options">
@@ -102,8 +102,9 @@ const Product = ({ data: { contentfulProduct: product } }) => {
                         key={node}
                         id={index}
                         style={{
-                          borderColor: activeSize === node && 'black',
-                          color: activeSize === node && 'black',
+                          borderColor: activeSize === node && '#333',
+                          backgroundColor: activeSize === node && '#333',
+                          color: activeSize === node && 'white',
                         }}
                       >
                         {node}
@@ -146,7 +147,9 @@ export const productQuery = graphql`
       name
       slug
       description {
-        description
+        childMarkdownRemark {
+          html
+        }
       }
       price
       images {

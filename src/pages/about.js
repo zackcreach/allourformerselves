@@ -11,7 +11,11 @@ const AboutPage = ({ data }) => {
       <SEO />
       <AboutStyles>
         <main>
-          <p>{data.contentfulPage.content.content}</p>
+          <p
+            dangerouslySetInnerHTML={{
+              __html: data.contentfulPage.content.childMarkdownRemark.html,
+            }}
+          />
         </main>
       </AboutStyles>
     </>
@@ -20,18 +24,15 @@ const AboutPage = ({ data }) => {
 
 export default AboutPage
 
-export const ProductsQuery = graphql`
+export const PageQuery = graphql`
   query {
     contentfulPage(title: { eq: "About" }) {
       title
       content {
-        content
+        childMarkdownRemark {
+          html
+        }
       }
-      # images {
-      #   fluid(maxWidth: 1500) {
-      #     ...GatsbyContentfulFluid_noBase64
-      #   }
-      # }
     }
   }
 `

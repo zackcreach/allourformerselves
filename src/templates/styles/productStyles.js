@@ -53,7 +53,12 @@ const ProductStyles = styled.header`
   }
 
   .description {
-    padding-bottom: 18px;
+    padding-bottom: 30px;
+  }
+
+  .description > ul {
+    padding-left: 20px;
+    list-style-type: square;
   }
 
   .options {
@@ -76,8 +81,17 @@ const ProductStyles = styled.header`
     margin-top: -5px;
   }
 
+  h1 + h2 {
+    padding-top: 0;
+  }
+
+  h2 {
+    padding-top: 10px;
+    padding-bottom: 13px;
+  }
+
   h3 {
-    padding-bottom: 14px;
+    padding-bottom: 10px;
   }
 
   .colors {
@@ -89,6 +103,7 @@ const ProductStyles = styled.header`
     margin-right: 6px;
     border: 1px solid ${props => props.theme.color.secondary};
     transition: all 0.25s ease;
+    user-select: none;
   }
 
   .sizes {
@@ -101,9 +116,11 @@ const ProductStyles = styled.header`
     line-height: 26px;
     margin-right: 6px;
     font-weight: 300;
-    color: ${props => props.theme.color.secondary};
-    border: 1px solid ${props => props.theme.color.secondary};
+    padding-top: 1px;
+    color: ${props => props.theme.color.primary};
+    border: 1px solid ${props => props.theme.color.primary};
     transition: all 0.25s ease;
+    user-select: none;
   }
 
   form {

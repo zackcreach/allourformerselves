@@ -24,6 +24,7 @@ module.exports = {
         autopop: true,
       },
     },
+    `gatsby-transformer-remark`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
     {
