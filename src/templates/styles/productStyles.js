@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const ProductStyles = styled.header`
   .container {
-    @media (min-width: ${props => props.theme.width.medium}) {
+    @media (min-width: 800px) {
       display: flex;
       align-items: flex-start;
     }
@@ -17,7 +17,7 @@ const ProductStyles = styled.header`
     flex: 0 0 60%;
     padding: 0 0 30px 0;
 
-    @media (min-width: ${props => props.theme.width.medium}) {
+    @media (min-width: 800px) {
       padding: 0 15px 0 0;
     }
   }
@@ -25,7 +25,7 @@ const ProductStyles = styled.header`
   .right {
     flex: 1 0 40%;
 
-    @media (min-width: ${props => props.theme.width.medium}) {
+    @media (min-width: 800px) {
       padding: 0 0 0 15px;
     }
   }
@@ -35,7 +35,7 @@ const ProductStyles = styled.header`
     margin-right: 15px;
     background-color: #f3f3f3;
 
-    @media (min-width: ${props => props.theme.width.medium}) {
+    @media (min-width: 800px) {
       background-color: transparent;
     }
   }
@@ -101,7 +101,7 @@ const ProductStyles = styled.header`
     width: 30px;
     height: 30px;
     margin-right: 6px;
-    border: 1px solid ${props => props.theme.color.secondary};
+    border: 1px solid #999;
     transition: all 0.25s ease;
     user-select: none;
   }
@@ -117,8 +117,8 @@ const ProductStyles = styled.header`
     margin-right: 6px;
     font-weight: 300;
     padding-top: 1px;
-    color: ${props => props.theme.color.primary};
-    border: 1px solid ${props => props.theme.color.primary};
+    color: #333;
+    border: 1px solid #333;
     transition: all 0.25s ease;
     user-select: none;
   }
@@ -135,12 +135,11 @@ const ProductStyles = styled.header`
   }
 
   button {
-    font-family: ${props => props.theme.font.secondary};
     font-weight: 300;
     font-size: 12px;
     padding-bottom: 2px;
     width: 100%;
-    background-color: ${props => props.theme.color.primary};
+    background-color: #333;
     color: white;
     text-transform: uppercase;
     border: none;
@@ -148,7 +147,7 @@ const ProductStyles = styled.header`
     cursor: pointer;
     transition: all 0.25s ease;
 
-    @media (min-width: ${props => props.theme.width.small}) {
+    @media (min-width: 400px) {
       width: 140px;
     }
   }

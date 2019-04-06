@@ -16,8 +16,8 @@ const GlobalStyles = createGlobalStyle`
   body {
     font-size: 1.5rem;
     line-height: 2;
-    font-family: ${props => props.theme.font.primary};
-    color: ${props => props.theme.color.primary};
+    font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
+    color: #333;
   }
 
   img {
@@ -25,7 +25,7 @@ const GlobalStyles = createGlobalStyle`
   }
   
   a {
-    color: ${props => props.theme.color.primary};
+    color: #333;
     text-decoration: none;
   }
 
@@ -36,7 +36,6 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1 {
-    font-family: ${props => props.theme.font.secondary};
     font-size: 20px;
     line-height: 28px;
     font-weight: 400;
@@ -45,7 +44,6 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h2 {
-    font-family: ${props => props.theme.font.secondary};
     font-size: 16px;
     line-height: 24px;
     font-weight: 400;
@@ -53,7 +51,6 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h3 {
-    font-family: ${props => props.theme.font.secondary};
     font-size: 15px;
     line-height: 22px;
     font-weight: 300;
@@ -63,7 +60,7 @@ const GlobalStyles = createGlobalStyle`
   p {
     font-size: 15px;
     line-height: 23px;
-    color: ${props => props.theme.color.primary};
+    color: #333;
     font-weight: 300;
     padding-bottom: 20px;
   }

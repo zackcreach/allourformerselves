@@ -10,8 +10,8 @@ const MenuStyles = styled.div`
     top: 50%;
     left: 30px;
     transform: translate3d(0, -50%, 0);
-    border-top: 1px solid ${props => props.theme.color.primary};
-    border-bottom: 1px solid ${props => props.theme.color.primary};
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
     cursor: pointer;
 
     &::after {
@@ -21,7 +21,7 @@ const MenuStyles = styled.div`
       top: 50%;
       width: 100%;
       transform: translate3d(0, -50%, 0);
-      background-color: ${props => props.theme.color.primary};
+      background-color: #333;
     }
   }
 
@@ -65,13 +65,12 @@ const MenuStyles = styled.div`
     width: 100%;
     background: #111;
 
-    @media (min-width: ${props => props.theme.width.medium}) {
+    @media (min-width: 800px) {
       width: 300px;
     }
   }
 
   a {
-    font-family: ${props => props.theme.font.secondary};
     user-select: none;
     color: #ccc;
     display: block;

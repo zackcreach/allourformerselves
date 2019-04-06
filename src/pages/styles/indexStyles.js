@@ -13,7 +13,7 @@ const IndexStyles = styled.div`
     display: flex;
     flex-wrap: wrap;
 
-    @media (min-width: ${props => props.theme.width.medium}) {
+    @media (min-width: 800px) {
       padding: 0 20px;
     }
   }
@@ -23,7 +23,7 @@ const IndexStyles = styled.div`
     text-align: center;
     flex: 0 0 100%;
 
-    @media (min-width: ${props => props.theme.width.medium}) {
+    @media (min-width: 800px) {
       flex: 0 1 25%;
     }
   }
@@ -33,15 +33,14 @@ const IndexStyles = styled.div`
   }
 
   p {
-    font-family: ${props => props.theme.font.secondary};
-    color: ${props => props.theme.color.secondary};
+    color: #999;
     font-size: 14px;
   }
 
   .thumbnail {
     height: 100vw;
 
-    @media (min-width: ${props => props.theme.width.medium}) {
+    @media (min-width: 800px) {
       height: 25vw;
     }
   }

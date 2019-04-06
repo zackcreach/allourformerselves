@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const PageStyles = styled.header`
   .container {
-    @media (min-width: ${props => props.theme.width.medium}) {
+    @media (min-width: 800px) {
       display: flex;
       align-items: flex-start;
     }
