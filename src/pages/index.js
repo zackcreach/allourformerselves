@@ -52,7 +52,7 @@ export const ProductsQuery = graphql`
         ...GatsbyContentfulFluid_noBase64
       }
     }
-    allContentfulProduct {
+    allContentfulProduct(sort: { fields: [order, name], order: [ASC, ASC] }) {
       edges {
         node {
           name
