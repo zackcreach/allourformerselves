@@ -4,7 +4,7 @@ import React from 'react'
 
 import HeaderStyles from './styles/headerStyles'
 import Menu from './menu'
-import logo from '../images/logo--black.svg'
+import logo from '../images/logo--black.png'
 
 const Header = ({ siteTitle, containerRef, containerHeight }) => {
   return (
