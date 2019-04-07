@@ -32,7 +32,7 @@ const MenuStyles = styled.div`
 
   .mask {
     position: fixed;
-    top: ${props => props.containerHeight || '100%'};
+    top: 96px;
     right: 0;
     bottom: 0;
     left: 0;
@@ -56,29 +56,34 @@ const MenuStyles = styled.div`
     opacity: 0;
   }
 
-  main {
+  nav {
     position: absolute;
     padding: 0;
     left: 0;
     top: calc(100% + 1px);
     height: calc(100vh - 95px);
     width: 100%;
-    background: #111;
+    background: black;
 
     @media (min-width: 800px) {
       width: 300px;
     }
   }
 
-  a {
+  nav > a {
     user-select: none;
     color: #ccc;
     display: block;
     font-weight: 300;
     font-size: 1.4rem;
     text-transform: uppercase;
-    padding: 15px 40px;
+    padding: 15px 30px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.5s ease;
+  }
+
+  nav > a:hover {
+    color: white;
   }
 
   .slide-right {

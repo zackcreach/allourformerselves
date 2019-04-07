@@ -5,6 +5,12 @@ const IndexStyles = styled.div`
     height: calc(100vh - 95px);
   }
 
+  main {
+    padding: 30px 0;
+    @media (min-width: 800px) {
+    }
+  }
+
   ul {
     list-style: none;
     padding: 0;

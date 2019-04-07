@@ -8,18 +8,19 @@ import MenuStyles from './styles/menuStyles'
 const Menu = ({ siteTitle, containerHeight }) => {
   const [showMenu, setShowMenu] = useState(false)
 
-  const mainRef = useRef()
+  const navRef = useRef()
   const figureRef = useRef()
 
   const animationDuration = 300
 
   const data = useStaticQuery(graphql`
-    query PagesQuery {
+    query MenuQuery {
       allContentfulPage(sort: { fields: [order, title], order: [ASC, ASC] }) {
         edges {
           node {
             title
             slug
+            visibleInMenu
           }
         }
       }
@@ -40,9 +41,9 @@ const Menu = ({ siteTitle, containerHeight }) => {
       setShowMenu(prevMenu => !prevMenu)
     }
     if (
-      event.target !== mainRef.current &&
+      event.target !== navRef.current &&
       event.target !== figureRef.current &&
-      event.target.parentElement !== mainRef.current
+      event.target.parentElement !== navRef.current
     ) {
       setShowMenu(prevMenu => (prevMenu ? !prevMenu : prevMenu))
     }
@@ -70,13 +71,17 @@ const Menu = ({ siteTitle, containerHeight }) => {
             classNames="slide-right"
             timeout={{ enter: animationDuration, exit: animationDuration }}
           >
-            <main ref={mainRef}>
-              {data.allContentfulPage.edges.map(({ node }) => (
-                <Link to={node.slug} key={node.title}>
-                  {node.title}
-                </Link>
-              ))}
-            </main>
+            <nav ref={navRef}>
+              {data.allContentfulPage.edges.map(({ node }) => {
+                if (node.visibleInMenu) {
+                  return (
+                    <Link to={node.slug} key={node.title}>
+                      {node.title}
+                    </Link>
+                  )
+                }
+              })}
+            </nav>
           </CSSTransition>
         )}
       </TransitionGroup>

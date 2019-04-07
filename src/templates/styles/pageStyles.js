@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 const PageStyles = styled.div`
+  min-height: calc(100vh - 300px);
+
   .container {
     @media (min-width: 800px) {
       display: flex;

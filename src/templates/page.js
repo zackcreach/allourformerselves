@@ -19,7 +19,7 @@ const Page = ({ data: { contentfulPage: page } }) => {
 
   return (
     <Layout>
-      <SEO />
+      <SEO title={page.title} keywords={[`All Our Former Selves`]} />
       <PageStyles>
         <main>
           <div

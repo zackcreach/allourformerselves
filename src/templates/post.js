@@ -19,7 +19,7 @@ const Post = ({ data: { contentfulPost: post } }) => {
 
   return (
     <Layout>
-      <SEO />
+      <SEO title={post.title} keywords={[`All Our Former Selves`]} />
       <PostStyles>
         <main>
           <div

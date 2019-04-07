@@ -6,6 +6,7 @@ import { StaticQuery, graphql, withPrefix } from 'gatsby'
 import favicon from '../../src/images/favicon.png'
 
 import Header from './header'
+import Footer from './footer'
 import GlobalStyles from './styles/globalStyles'
 import LayoutStyles from './styles/layoutStyles'
 
@@ -39,6 +40,7 @@ const Layout = ({ children }) => {
           <GlobalStyles />
           <Header siteTitle={data.site.siteMetadata.title} />
           <LayoutStyles>{children}</LayoutStyles>
+          <Footer />
         </>
       )}
     />
