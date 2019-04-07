@@ -94,6 +94,10 @@ const ProductStyles = styled.div`
     padding-bottom: 10px;
   }
 
+  .list {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   .block {
     font-size: 12px;
     width: 36px;

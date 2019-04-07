@@ -6,11 +6,11 @@ import HeaderStyles from './styles/headerStyles'
 import Menu from './menu'
 import logo from '../images/logo--black.png'
 
-const Header = ({ siteTitle, containerRef, containerHeight }) => {
+const Header = ({ siteTitle }) => {
   return (
     <HeaderStyles>
-      <div className="container" ref={containerRef}>
-        <Menu containerHeight={containerHeight} />
+      <div className="container">
+        <Menu />
         <Link className="logo-link" to="/">
           <img className="logo" src={logo} alt="All Our Former Selves logo" />
         </Link>

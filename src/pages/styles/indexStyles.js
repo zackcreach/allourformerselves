@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const IndexStyles = styled.div`
   .hero {
-    height: calc(100vh - 92px);
+    height: calc(100vh - 95px);
   }
 
   ul {

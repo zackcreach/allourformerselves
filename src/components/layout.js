@@ -10,13 +10,6 @@ import GlobalStyles from './styles/globalStyles'
 import LayoutStyles from './styles/layoutStyles'
 
 const Layout = ({ children }) => {
-  const [containerHeight, setContainerHeight] = useState('')
-  const containerRef = useRef()
-
-  useEffect(() => {
-    setContainerHeight(`${containerRef.current.offsetHeight - 1}px`)
-  }, [containerRef.current])
-
   return (
     <StaticQuery
       query={graphql`
@@ -33,7 +26,7 @@ const Layout = ({ children }) => {
           <Helmet
             link={[
               {
-                href: withPrefix('/snipcart/snipcart.css'),
+                href: withPrefix('/snipcart/snipcart.min.css'),
                 rel: 'stylesheet',
                 type: 'text/css',
               },
@@ -44,14 +37,8 @@ const Layout = ({ children }) => {
             ]}
           />
           <GlobalStyles />
-          <Header
-            containerRef={containerRef}
-            containerHeight={containerHeight}
-            siteTitle={data.site.siteMetadata.title}
-          />
-          <LayoutStyles containerHeight={containerHeight}>
-            {children}
-          </LayoutStyles>
+          <Header siteTitle={data.site.siteMetadata.title} />
+          <LayoutStyles>{children}</LayoutStyles>
         </>
       )}
     />

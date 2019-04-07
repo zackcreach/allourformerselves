@@ -59,7 +59,7 @@ export const ProductsQuery = graphql`
           price
           slug
           thumbnail {
-            fluid(maxWidth: 1300) {
+            fluid(maxWidth: 500) {
               ...GatsbyContentfulFluid_noBase64
             }
           }

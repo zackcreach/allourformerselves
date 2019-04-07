@@ -52,10 +52,7 @@ const Menu = ({ siteTitle, containerHeight }) => {
   }
 
   return (
-    <MenuStyles
-      containerHeight={containerHeight}
-      animationDuration={animationDuration}
-    >
+    <MenuStyles animationDuration={animationDuration}>
       <figure ref={figureRef} />
       <TransitionGroup>
         {showMenu && (

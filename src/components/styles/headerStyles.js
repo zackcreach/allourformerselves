@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 const HeaderStyles = styled.header`
   .container {
-    /* position: ${props => (props.headerFixed ? 'fixed' : 'absolute')}; */
     position: fixed;
     z-index: 1;
     width: 100%;
@@ -25,6 +24,7 @@ const HeaderStyles = styled.header`
   .snipcart-checkout {
     position: absolute;
     width: 28px;
+    height: 28px;
     right: 30px;
     top: 50%;
     transform: translateY(-50%);
