@@ -24,13 +24,14 @@ const Product = ({ data: { contentfulProduct: product } }) => {
   }, [])
 
   const handleClick = event => {
+    console.log(event.target.dataset.category)
     if (event.target.tagName === 'IMG') {
       setActiveImage(product.images[event.currentTarget.id])
     }
-    if (event.target.className === 'colors__block') {
+    if (event.target.dataset.category === 'color') {
       setActiveColor(product.colors[event.target.id])
     }
-    if (event.target.className === 'sizes__block') {
+    if (event.target.dataset.category === 'size') {
       setActiveSize(product.sizes[event.target.id])
     }
   }
@@ -80,28 +81,32 @@ const Product = ({ data: { contentfulProduct: product } }) => {
                 />
                 <div className="options">
                   <h3 className="title">Colors</h3>
-                  <ul className="list colors" onClick={handleClick}>
+                  <ul className="list" onClick={handleClick}>
                     {product.colors.map((node, index) => (
                       <li
-                        className="colors__block"
-                        style={{
-                          backgroundColor: node,
-                          borderColor: activeColor === node && 'black',
-                        }}
+                        className="block"
                         key={node}
                         id={index}
+                        title={node}
+                        data-category="color"
+                        style={{
+                          backgroundColor: node,
+                          borderColor: activeColor === node && '#333',
+                        }}
                       />
                     ))}
                   </ul>
                 </div>
                 <div className="options">
                   <h3 className="title">Sizes</h3>
-                  <ul className="list sizes" onClick={handleClick}>
+                  <ul className="list" onClick={handleClick}>
                     {product.sizes.map((node, index) => (
                       <li
-                        className="sizes__block"
+                        className="block"
                         key={node}
                         id={index}
+                        title={node}
+                        data-category="size"
                         style={{
                           borderColor: activeSize === node && '#333',
                           backgroundColor: activeSize === node && '#333',
@@ -141,7 +146,7 @@ const Product = ({ data: { contentfulProduct: product } }) => {
   )
 }
 
-export const productQuery = graphql`
+export const ProductQuery = graphql`
   query productData($slug: String!) {
     contentfulProduct(slug: { eq: $slug }) {
       id

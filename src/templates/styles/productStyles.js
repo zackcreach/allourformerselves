@@ -94,33 +94,24 @@ const ProductStyles = styled.div`
     padding-bottom: 10px;
   }
 
-  .colors {
-  }
-
-  .colors__block {
-    width: 30px;
-    height: 30px;
-    margin-right: 6px;
-    border: 1px solid #999;
-    transition: all 0.25s ease;
-    user-select: none;
-  }
-
-  .sizes {
-  }
-
-  .sizes__block {
+  .block {
     font-size: 12px;
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 35px;
     line-height: 26px;
-    margin-right: 6px;
     font-weight: 300;
-    padding-top: 1px;
+    padding-top: 3px;
     color: #333;
     border: 1px solid #333;
     transition: all 0.25s ease;
     user-select: none;
+    margin-right: -1px;
+  }
+
+  .block[data-category='size']:hover,
+  .block[data-category='size']:active {
+    color: white;
+    background-color: #333;
   }
 
   form {

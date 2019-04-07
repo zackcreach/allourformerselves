@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const PageStyles = styled.div`
+const PostStyles = styled.div`
   .container {
     @media (min-width: 800px) {
       display: flex;
@@ -32,6 +32,12 @@ const PageStyles = styled.div`
   a {
     text-decoration: underline;
   }
+
+  img {
+    width: 100%;
+    max-height: 600px;
+    object-fit: cover;
+  }
 `
 
-export default PageStyles
+export default PostStyles

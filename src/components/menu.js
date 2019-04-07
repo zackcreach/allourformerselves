@@ -15,7 +15,7 @@ const Menu = ({ siteTitle, containerHeight }) => {
 
   const data = useStaticQuery(graphql`
     query PagesQuery {
-      allContentfulPage(sort: { fields: title, order: ASC }) {
+      allContentfulPage(sort: { fields: [order, title], order: [ASC, ASC] }) {
         edges {
           node {
             title

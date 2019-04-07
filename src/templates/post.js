@@ -4,30 +4,30 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-import PageStyles from './styles/pageStyles'
+import PostStyles from './styles/postStyles'
 
-const Page = ({ data: { contentfulPage: page } }) => {
+const Post = ({ data: { contentfulPost: post } }) => {
   return (
     <Layout>
       <SEO />
-      <PageStyles>
+      <PostStyles>
         <main>
           <div
             dangerouslySetInnerHTML={{
-              __html: page.content.childMarkdownRemark.html,
+              __html: post.content.childMarkdownRemark.html,
             }}
           />
         </main>
-      </PageStyles>
+      </PostStyles>
     </Layout>
   )
 }
 
-export default Page
+export default Post
 
-export const PageQuery = graphql`
-  query pageData($slug: String!) {
-    contentfulPage(slug: { eq: $slug }) {
+export const PostQuery = graphql`
+  query postData($slug: String!) {
+    contentfulPost(slug: { eq: $slug }) {
       title
       content {
         childMarkdownRemark {

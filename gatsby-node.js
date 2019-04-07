@@ -27,6 +27,13 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         }
+        allContentfulPost {
+          edges {
+            node {
+              slug
+            }
+          }
+        }
       }
     `)
       .then(result => {
@@ -58,6 +65,18 @@ exports.createPages = ({ graphql, actions }) => {
             createPage({
               path: `${node.slug}`,
               component: path.resolve('./src/templates/product.js'),
+              context: {
+                slug: node.slug,
+              },
+            })
+          }
+        })
+        result.data.allContentfulPost.edges.map(({ node }) => {
+          if (currentPages.indexOf(node.slug) === -1) {
+            console.log(`Creating new post view: ${node.slug}`)
+            createPage({
+              path: `${node.slug}`,
+              component: path.resolve('./src/templates/post.js'),
               context: {
                 slug: node.slug,
               },
