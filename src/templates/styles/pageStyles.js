@@ -32,6 +32,11 @@ const PageStyles = styled.div`
   a {
     text-decoration: underline;
   }
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
 `
 
 export default PageStyles

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
@@ -7,6 +7,16 @@ import SEO from '../components/seo'
 import PageStyles from './styles/pageStyles'
 
 const Page = ({ data: { contentfulPage: page } }) => {
+  const [modifiedHtml, setModifiedHtml] = useState(
+    page.content.childMarkdownRemark.html
+  )
+
+  useEffect(() => {
+    setModifiedHtml(
+      page.content.childMarkdownRemark.html.replace(/<a/g, `<a target='_blank'`)
+    )
+  }, [])
+
   return (
     <Layout>
       <SEO />
@@ -14,7 +24,7 @@ const Page = ({ data: { contentfulPage: page } }) => {
         <main>
           <div
             dangerouslySetInnerHTML={{
-              __html: page.content.childMarkdownRemark.html,
+              __html: modifiedHtml,
             }}
           />
         </main>

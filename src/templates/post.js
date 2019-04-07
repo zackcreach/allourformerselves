@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
@@ -7,6 +7,16 @@ import SEO from '../components/seo'
 import PostStyles from './styles/postStyles'
 
 const Post = ({ data: { contentfulPost: post } }) => {
+  const [modifiedHtml, setModifiedHtml] = useState(
+    post.content.childMarkdownRemark.html
+  )
+
+  useEffect(() => {
+    setModifiedHtml(
+      post.content.childMarkdownRemark.html.replace(/<a/g, `<a target='_blank'`)
+    )
+  }, [])
+
   return (
     <Layout>
       <SEO />
@@ -14,7 +24,7 @@ const Post = ({ data: { contentfulPost: post } }) => {
         <main>
           <div
             dangerouslySetInnerHTML={{
-              __html: post.content.childMarkdownRemark.html,
+              __html: modifiedHtml,
             }}
           />
         </main>
