@@ -72,6 +72,7 @@ const Menu = ({ siteTitle, containerHeight }) => {
             timeout={{ enter: animationDuration, exit: animationDuration }}
           >
             <nav ref={navRef}>
+              <Link to="/">Shop</Link>
               {data.allContentfulPage.edges.map(({ node }) => {
                 if (node.visibleInMenu) {
                   return (
