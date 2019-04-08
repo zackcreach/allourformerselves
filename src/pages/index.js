@@ -13,23 +13,23 @@ const IndexPage = ({ data }) => {
       <SEO />
       <IndexStyles>
         <Img
-          fluid={data.contentfulAsset.fluid}
+          fluid={data.contentfulPage.mainImage.fluid}
           imgStyle={{ objectPosition: 'center top' }}
           className="hero"
         />
         <main>
           <ul>
             {data.allContentfulProduct.edges.map(({ node }, index) => (
-              <li key={`${index} – ${node.name}`}>
+              <li key={node.title}>
                 <Link to={node.slug}>
                   <figure>
                     <Img
-                      fluid={node.thumbnail.fluid}
+                      fluid={node.mainImage.fluid}
                       className="thumbnail"
-                      alt={node.name}
+                      alt={node.title}
                     />
                     <figcaption>
-                      <h3>{node.name}</h3>
+                      <h3>{node.title}</h3>
                       <p>${node.price}</p>
                     </figcaption>
                   </figure>
@@ -47,18 +47,20 @@ export default IndexPage
 
 export const ProductsQuery = graphql`
   query {
-    contentfulAsset(title: { regex: "/33/" }) {
-      fluid(maxWidth: 1000) {
-        ...GatsbyContentfulFluid_noBase64
+    contentfulPage(title: { regex: "/home/i" }) {
+      mainImage {
+        fluid(maxWidth: 1000) {
+          ...GatsbyContentfulFluid_noBase64
+        }
       }
     }
-    allContentfulProduct(sort: { fields: [order, name], order: [ASC, ASC] }) {
+    allContentfulProduct(sort: { fields: [order, title], order: [ASC, ASC] }) {
       edges {
         node {
-          name
+          title
           price
           slug
-          thumbnail {
+          mainImage {
             fluid(maxWidth: 500) {
               ...GatsbyContentfulFluid_noBase64
             }

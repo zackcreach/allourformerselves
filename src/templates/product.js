@@ -38,7 +38,7 @@ const Product = ({ data: { contentfulProduct: product } }) => {
 
   return (
     <Layout>
-      <SEO title={product.name} keywords={[`All Our Former Selves`]} />
+      <SEO title={product.title} keywords={[`All Our Former Selves`]} />
       <ProductStyles activeImage={activeImage}>
         <main>
           <section className="container">
@@ -72,7 +72,7 @@ const Product = ({ data: { contentfulProduct: product } }) => {
             </div>
             <div className="right">
               <div className="right__container" ref={rightRef}>
-                <h1>{product.name}</h1>
+                <h1>{product.title}</h1>
                 <div
                   className="description"
                   dangerouslySetInnerHTML={{
@@ -123,7 +123,7 @@ const Product = ({ data: { contentfulProduct: product } }) => {
                   <button
                     className="snipcart-add-item"
                     data-item-id={product.id}
-                    data-item-name={product.name}
+                    data-item-name={product.title}
                     data-item-price={product.price}
                     data-item-url={activeUrl}
                     data-item-custom1-name="Size"
@@ -150,7 +150,7 @@ export const ProductQuery = graphql`
   query productData($slug: String!) {
     contentfulProduct(slug: { eq: $slug }) {
       id
-      name
+      title
       slug
       description {
         childMarkdownRemark {

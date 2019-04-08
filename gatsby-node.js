@@ -39,7 +39,7 @@ exports.createPages = ({ graphql, actions }) => {
       .then(result => {
         // Let's start by building an array with all current pages
         // We've added '/' in contentful, so adding that in to start
-        let currentPages = ['/']
+        let currentPages = ['/', 'home']
         result.data.allFile.edges.filter(({ node }) => {
           if (node.relativeDirectory.includes('pages')) {
             return currentPages.push(node.name)
@@ -49,7 +49,7 @@ exports.createPages = ({ graphql, actions }) => {
         // directory already using indexOf() to check if it's in the array
         result.data.allContentfulPage.edges.map(({ node }) => {
           if (currentPages.indexOf(node.slug) === -1) {
-            console.log(`Creating new info view: ${node.slug}`)
+            console.log(`Creating new page view: ${node.slug}`)
             createPage({
               path: `${node.slug}`,
               component: path.resolve('./src/templates/page.js'),
