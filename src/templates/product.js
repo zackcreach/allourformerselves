@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { graphql } from 'gatsby'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import Img from 'gatsby-image'
+import { get } from 'lodash-es'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -18,13 +19,20 @@ const Product = ({ data: { contentfulProduct: product } }) => {
   const [activeColor, setActiveColor] = useState(product.colors[0])
 
   const animationDuration = 300
+  const title = product.metaTitle || product.title
+  const description =
+    get(product, 'metaDescription.metaDescription') ||
+    (get(product, 'description.description') &&
+      product.description.description.split('. ')[0]) ||
+    title
+  const image =
+    get(product, 'metaImage.fixed.src') || get(product, 'mainImage.fixed.src')
 
   useEffect(() => {
     setActiveUrl(window.location.href)
   }, [])
 
   const handleClick = event => {
-    console.log(event.target.dataset.category)
     if (event.target.tagName === 'IMG') {
       setActiveImage(product.images[event.currentTarget.id])
     }
@@ -38,7 +46,12 @@ const Product = ({ data: { contentfulProduct: product } }) => {
 
   return (
     <Layout>
-      <SEO title={product.title} keywords={[`All Our Former Selves`]} />
+      <SEO
+        title={title}
+        description={description}
+        image={image}
+        keywords={[`All Our Former Selves`]}
+      />
       <ProductStyles activeImage={activeImage}>
         <main>
           <section className="container">
@@ -153,11 +166,17 @@ export const ProductQuery = graphql`
       title
       slug
       description {
+        description
         childMarkdownRemark {
           html
         }
       }
       price
+      mainImage {
+        fixed(width: 1200, height: 630) {
+          src
+        }
+      }
       images {
         fluid(maxWidth: 600) {
           ...GatsbyContentfulFluid
@@ -165,6 +184,15 @@ export const ProductQuery = graphql`
       }
       sizes
       colors
+      metaTitle
+      metaDescription {
+        metaDescription
+      }
+      metaImage {
+        fixed(width: 1200, height: 630) {
+          src
+        }
+      }
     }
   }
 `

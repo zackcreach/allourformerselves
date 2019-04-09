@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
+import { get } from 'lodash-es'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -11,6 +12,15 @@ const Page = ({ data: { contentfulPage: page } }) => {
     page.content.childMarkdownRemark.html
   )
 
+  const title = page.metaTitle || page.title
+  const description =
+    get(page, 'metaDescription.metaDescription') ||
+    (get(page, 'description.description') &&
+      page.description.description.split('. ')[0]) ||
+    title
+  const image =
+    get(page, 'metaImage.fixed.src') || get(page, 'mainImage.fixed.src')
+
   useEffect(() => {
     setModifiedHtml(
       page.content.childMarkdownRemark.html.replace(/<a/g, `<a target='_blank'`)
@@ -19,7 +29,12 @@ const Page = ({ data: { contentfulPage: page } }) => {
 
   return (
     <Layout>
-      <SEO title={page.title} keywords={[`All Our Former Selves`]} />
+      <SEO
+        title={title}
+        description={description}
+        image={image}
+        keywords={[`All Our Former Selves`]}
+      />
       <PageStyles>
         <main>
           <div
