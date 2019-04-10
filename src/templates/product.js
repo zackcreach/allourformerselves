@@ -140,6 +140,7 @@ const Product = ({ data: { contentfulProduct: product } }) => {
                     data-item-price={product.price}
                     data-item-weight="150"
                     data-item-url={activeUrl}
+                    data-item-image={get(product, 'mainImage.fixed.src')}
                     data-item-custom1-name="Size"
                     data-item-custom1-options={product.sizes.join('|')}
                     data-item-custom1-value={activeSize}
