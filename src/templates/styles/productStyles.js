@@ -135,7 +135,7 @@ const ProductStyles = styled.div`
     font-weight: 300;
     font-size: 12px;
     padding-bottom: 2px;
-    width: 100%;
+    width: 140px;
     background-color: #333;
     color: white;
     text-transform: uppercase;
@@ -143,10 +143,6 @@ const ProductStyles = styled.div`
     height: 36px;
     cursor: pointer;
     transition: all 0.25s ease;
-
-    @media (min-width: 400px) {
-      width: 140px;
-    }
   }
 
   button:hover {

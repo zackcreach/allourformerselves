@@ -79,7 +79,7 @@ body.snip-open {
 .snip-layout {
   background: rgba(0, 0, 0, 0.25);
   bottom: 0;
-  color: #ccc;
+  color: #777;
   font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
   font-size: 14px;
   left: 0;
@@ -412,9 +412,9 @@ h4,
   .snip-layout select {
     background: #fff;
     border-radius: 0;
-    border: 1px solid #eee;
+    border: 1px solid #ccc;
     box-sizing: border-box;
-    color: #555;
+    color: #333;
     display: block;
     font-size: 14px;
     border-radius: 0;
@@ -438,11 +438,12 @@ h4,
     color: #fff;
     cursor: pointer;
     display: inline-block;
-    font-size: 10px;
+    font-weight: 300;
+    font-size: 12px;
     height: 36px;
     line-height: 36px;
     outline: 0;
-    padding: 0 1em;
+    padding: 0 2em;
     text-transform: uppercase; }
     .snip-layout .snip-btn:hover {
       background-color: #3c3c3c; }
@@ -564,6 +565,7 @@ h4,
     color: #fff; }
   .snip-layout .snip-header__title {
     display: none;
+    color: #ccc;
     line-height: 59px;
     text-align: center; }
     .snip-layout .snip-header__title.js-show {
@@ -573,7 +575,7 @@ h4,
         display: block;
         font-size: 1.4rem;
         font-weight: 300;
-        left: 1.25em;
+        left: 30px;
         line-height: 59px;
         position: absolute;
         text-align: left; } }
@@ -581,11 +583,12 @@ h4,
     background: black;
     border-radius: 5px;
     display: inline-block;
-    padding: 20px .625em 0;
+    padding: 20px 1em 0;
     font-size: 1.4rem;
-    font-weight: 300; }
+    font-weight: 300;
+    color: #ccc; }
   .snip-layout .snip-header__total-label {
-    color: #ccc;
+    color: #777;
     margin-right: .625em;
     text-transform: uppercase; }
   .snip-layout .snip-header__continue {
@@ -638,7 +641,7 @@ h4,
     border-top: none;
     border-bottom: 1px solid #eee; }
   .snip-layout .snip-actions__link {
-    color: #ccc; }
+    color: #777; }
   .snip-layout .snip-actions__link--small {
     font-size: 12px; }
   .snip-layout .snip-actions__link--right {
@@ -710,14 +713,14 @@ h4,
           text-align: inherit; } }
   .snip-layout .snip-table__header {
     font-size: 12px;
-    padding: 1em 2em;
+    padding: 1em 30px;
     text-transform: uppercase; }
     .snip-layout .snip-table__header ~ .snip-table__header {
       border-top: 1px solid #eee; }
   .snip-layout .snip-table__body {
     border-top: 1px solid #eee;
     display: table-row-group;
-    padding: 1.429em; }
+    padding: 1.429em 30px; }
   .snip-layout .snip-table__body--small {
     background: #f8f8f8; }
     @media only screen and (min-width: 48em) {
@@ -966,7 +969,7 @@ h4,
     .snip-layout .snip-form__container + .snip-form__container {
       margin-top: 1em; }
   .snip-layout .snip-form__label {
-    color: #ccc;
+    color: #777;
     display: block;
     font-size: 12px;
     margin: 0 0 .5em 0;
@@ -997,9 +1000,9 @@ h4,
   .snip-layout .snip-form__sq-input {
     background: #fff;
     border-radius: 0;
-    border: 1px solid #eee;
+    border: 1px solid #ccc;
     box-sizing: border-box;
-    color: #555;
+    color: #333;
     display: block;
     font-size: 14px;
     border-radius: 0;
@@ -1015,7 +1018,7 @@ h4,
   .snip-layout .snip-steps {
     background: #ccc;
     display: block;
-    height: 48px; }
+    height: 47.2px; }
     .snip-layout .snip-steps.snip-steps--4 li {
       width: 25%; }
     .snip-layout .snip-steps.snip-steps--5 li {
@@ -1026,7 +1029,7 @@ h4,
       width: 14.28571%; }
     @media only screen and (min-width: 48em) {
       .snip-layout .snip-steps {
-        height: 60px; } }
+        height: 59px; } }
   .snip-layout .snip-step__item {
     background: #ccc;
     border-bottom: 1px solid #bbb;
@@ -1072,7 +1075,6 @@ h4,
     display: none; }
     @media only screen and (min-width: 48em) {
       .snip-layout .snip-step__label {
-        font-weight: 700;
         display: table-cell;
         font-size: 10px;
         line-height: 16px;
