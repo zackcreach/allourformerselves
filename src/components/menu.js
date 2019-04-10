@@ -81,6 +81,7 @@ const Menu = ({ siteTitle, containerHeight }) => {
                     </Link>
                   )
                 }
+                return null
               })}
             </nav>
           </CSSTransition>

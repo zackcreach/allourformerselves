@@ -30,7 +30,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   main {
-    padding: 40px 30px;
+    padding: 40px 30px 120px;
     margin: 0 auto;
     max-width: 1200px;
   }

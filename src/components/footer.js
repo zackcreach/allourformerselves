@@ -5,9 +5,8 @@ import React from 'react'
 import FooterStyles from './styles/footerStyles'
 
 import logo from '../images/logo--white.png'
-import instagram from '../images/instagram.svg'
 
-const Footer = ({ siteTitle }) => {
+const Footer = () => {
   const data = useStaticQuery(graphql`
     query FooterQuery {
       allContentfulPage(sort: { fields: [order, title], order: [ASC, ASC] }) {
@@ -37,6 +36,7 @@ const Footer = ({ siteTitle }) => {
                 </Link>
               )
             }
+            return null
           })}
         </nav>
       </div>
