@@ -13,11 +13,7 @@ const Post = ({ data: { contentfulPost: post } }) => {
   )
 
   const title = post.metaTitle || post.title
-  const description =
-    get(post, 'metaDescription.metaDescription') ||
-    (get(post, 'description.description') &&
-      post.description.description.split('. ')[0]) ||
-    title
+  const description = get(post, 'metaDescription.metaDescription') || title
   const image =
     get(post, 'metaImage.fixed.src') || get(post, 'mainImage.fixed.src')
 
@@ -57,6 +53,15 @@ export const PostQuery = graphql`
       content {
         childMarkdownRemark {
           html
+        }
+      }
+      metaTitle
+      metaDescription {
+        metaDescription
+      }
+      metaImage {
+        fixed(width: 1200, height: 630) {
+          src
         }
       }
     }

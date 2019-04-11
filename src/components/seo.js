@@ -8,6 +8,7 @@ function SEO({ description, lang, meta, keywords, title, image }) {
     <StaticQuery
       query={detailsQuery}
       render={data => {
+        const metaTitle = title || data.site.siteMetadata.title
         const metaDescription =
           description || data.site.siteMetadata.description
         const metaImage = image || data.contentfulAsset.fixed.src
@@ -16,7 +17,7 @@ function SEO({ description, lang, meta, keywords, title, image }) {
             htmlAttributes={{
               lang,
             }}
-            title={title}
+            title={metaTitle}
             titleTemplate={`%s | ${data.site.siteMetadata.title}`}
             defaultTitle={data.site.siteMetadata.title}
             meta={[
@@ -26,7 +27,7 @@ function SEO({ description, lang, meta, keywords, title, image }) {
               },
               {
                 property: `og:title`,
-                content: title,
+                content: metaTitle,
               },
               {
                 property: `og:description`,
@@ -58,7 +59,7 @@ function SEO({ description, lang, meta, keywords, title, image }) {
               },
               {
                 name: `twitter:title`,
-                content: title,
+                content: metaTitle,
               },
               {
                 name: `twitter:description`,

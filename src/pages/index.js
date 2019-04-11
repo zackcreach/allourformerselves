@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import { get } from 'lodash-es'
 import Img from 'gatsby-image'
 
 import Layout from '../components/layout'
@@ -7,19 +8,31 @@ import SEO from '../components/seo'
 
 import IndexStyles from './styles/indexStyles'
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({
+  data: { contentfulPage: page, allContentfulProduct: products },
+}) => {
+  const title = page.metaTitle || page.title
+  const description = get(page, 'metaDescription.metaDescription') || title
+  const image =
+    get(page, 'metaImage.fixed.src') || get(page, 'mainImage.fixed.src')
+
   return (
     <Layout>
-      <SEO />
+      <SEO
+        title={title}
+        description={description}
+        image={image}
+        keywords={[`All Our Former Selves`]}
+      />
       <IndexStyles>
         <Img
-          fluid={data.contentfulPage.mainImage.fluid}
+          fluid={page.mainImage.fluid}
           imgStyle={{ objectPosition: 'center top' }}
           className="hero"
         />
         <main>
           <ul>
-            {data.allContentfulProduct.edges.map(({ node }, index) => (
+            {products.edges.map(({ node }, index) => (
               <li key={node.title}>
                 <Link to={node.slug}>
                   <figure>
@@ -51,6 +64,15 @@ export const ProductsQuery = graphql`
       mainImage {
         fluid(maxWidth: 1000) {
           ...GatsbyContentfulFluid_noBase64
+        }
+      }
+      metaTitle
+      metaDescription {
+        metaDescription
+      }
+      metaImage {
+        fixed(width: 1200, height: 630) {
+          src
         }
       }
     }

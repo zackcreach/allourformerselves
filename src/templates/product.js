@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { graphql } from 'gatsby'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
-import Img from 'gatsby-image'
 import { get } from 'lodash-es'
+import Img from 'gatsby-image'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -19,12 +19,9 @@ const Product = ({ data: { contentfulProduct: product } }) => {
   const [activeColor, setActiveColor] = useState(product.colors[0])
 
   const animationDuration = 300
+
   const title = product.metaTitle || product.title
-  const description =
-    get(product, 'metaDescription.metaDescription') ||
-    (get(product, 'description.description') &&
-      product.description.description.split('. ')[0]) ||
-    title
+  const description = get(product, 'metaDescription.metaDescription') || title
   const image =
     get(product, 'metaImage.fixed.src') || get(product, 'mainImage.fixed.src')
 

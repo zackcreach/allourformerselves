@@ -13,11 +13,7 @@ const Page = ({ data: { contentfulPage: page } }) => {
   )
 
   const title = page.metaTitle || page.title
-  const description =
-    get(page, 'metaDescription.metaDescription') ||
-    (get(page, 'description.description') &&
-      page.description.description.split('. ')[0]) ||
-    title
+  const description = get(page, 'metaDescription.metaDescription') || title
   const image =
     get(page, 'metaImage.fixed.src') || get(page, 'mainImage.fixed.src')
 
@@ -57,6 +53,15 @@ export const PageQuery = graphql`
       content {
         childMarkdownRemark {
           html
+        }
+      }
+      metaTitle
+      metaDescription {
+        metaDescription
+      }
+      metaImage {
+        fixed(width: 1200, height: 630) {
+          src
         }
       }
     }
