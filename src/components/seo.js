@@ -12,14 +12,18 @@ function SEO({ description, lang, meta, keywords, title, image }) {
         const metaDescription =
           description || data.site.siteMetadata.description
         const metaImage = image || data.contentfulAsset.fixed.src
+
         return (
           <Helmet
             htmlAttributes={{
               lang,
             }}
             title={metaTitle}
-            titleTemplate={`%s | ${data.site.siteMetadata.title}`}
-            defaultTitle={data.site.siteMetadata.title}
+            titleTemplate={
+              title
+                ? `%s | ${data.site.siteMetadata.title}`
+                : data.site.siteMetadata.title
+            }
             meta={[
               {
                 name: `description`,
