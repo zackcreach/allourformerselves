@@ -43,7 +43,7 @@ function SEO({ description, lang, meta, keywords, title, image }) {
               },
               {
                 property: `og:image`,
-                content: metaImage,
+                content: `https:${metaImage}`,
               },
               {
                 property: `og:image:width`,
@@ -75,7 +75,7 @@ function SEO({ description, lang, meta, keywords, title, image }) {
               },
               {
                 name: `twitter:image`,
-                content: metaImage,
+                content: `https:${metaImage}`,
               },
             ]
               .concat(
