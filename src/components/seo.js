@@ -55,11 +55,15 @@ function SEO({ description, lang, meta, keywords, title, image }) {
               },
               {
                 name: `twitter:card`,
-                content: `summary`,
+                content: `summary_large_image`,
+              },
+              {
+                name: `twitter:site`,
+                content: `@zackcreach`,
               },
               {
                 name: `twitter:creator`,
-                content: data.site.siteMetadata.author,
+                content: `@zackcreach`,
               },
               {
                 name: `twitter:title`,
@@ -70,7 +74,7 @@ function SEO({ description, lang, meta, keywords, title, image }) {
                 content: metaDescription,
               },
               {
-                name: `twitter:image:src`,
+                name: `twitter:image`,
                 content: metaImage,
               },
             ]
