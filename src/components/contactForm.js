@@ -29,17 +29,11 @@ const ContactForm = () => {
     setUserInput({ [name]: value })
   }
 
-  const encode = data => {
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-      .join('&')
-  }
-
   const handleSubmit = event => {
-    fetch('/', {
+    fetch('/.netlify/functions/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'contact-form', userInput }),
+      body: JSON.stringify(userInput),
     })
       .then(() => {
         console.log('Message sent successfully!', userInput)
@@ -64,13 +58,7 @@ const ContactForm = () => {
   }
   return (
     <ContactFormStyles>
-      <form
-        name="contact-form"
-        method="post"
-        onSubmit={handleSubmit}
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-      >
+      <form onSubmit={handleSubmit}>
         <label htmlFor="name">
           Name
           <input
