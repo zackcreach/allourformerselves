@@ -1,5 +1,5 @@
 const sendMail = require('sendmail')()
-const { validateEmail, validateLength } = require('../utilities/validations')
+const { validateEmail, validateLength } = require('../../utilities/validations')
 
 exports.handler = (event, context, callback) => {
   if (!process.env.FORM_CONTACT_EMAIL) {
