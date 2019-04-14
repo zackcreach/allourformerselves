@@ -16,6 +16,7 @@
     "gatsby-plugin-offline": "^2.0.25",
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sharp": "^2.0.32",
+    "gatsby-plugin-sitemap": "^2.0.12",
     "gatsby-plugin-snipcart": "^1.0.6",
     "gatsby-plugin-styled-components": "^3.0.7",
     "gatsby-source-contentful": "^2.0.45",

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import ReactDOM from 'react-dom'
 import { graphql } from 'gatsby'
 import { get } from 'lodash-es'
 
 import Layout from '../components/layout'
+import ContactForm from '../components/contactForm'
 import SEO from '../components/seo'
 
 import PageStyles from './styles/pageStyles'
@@ -17,11 +19,30 @@ const Page = ({ data: { contentfulPage: page } }) => {
   const image =
     get(page, 'metaImage.fixed.src') || get(page, 'mainImage.fixed.src')
 
+  // ComponentDidMount, basically, due to []
   useEffect(() => {
+    renderLinksBlank()
+  }, [])
+
+  // ComponentDidUpdate
+  useEffect(() => {
+    renderContactForm()
+  })
+
+  const renderContactForm = () => {
+    const modules = document.querySelectorAll('.module-contact')
+
+    if (modules.length > 0) {
+      const modulesArray = Array.from(modules)
+      modulesArray.map(node => ReactDOM.render(<ContactForm />, node))
+    }
+  }
+
+  const renderLinksBlank = () => {
     setModifiedHtml(
       page.content.childMarkdownRemark.html.replace(/<a/g, `<a target='_blank'`)
     )
-  }, [])
+  }
 
   return (
     <Layout>

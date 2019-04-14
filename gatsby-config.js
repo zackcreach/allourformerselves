@@ -9,6 +9,7 @@ module.exports = {
     author: `Kevin Tansey`,
   },
   plugins: [
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-source-contentful`,
       options: {
