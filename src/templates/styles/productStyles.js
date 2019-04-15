@@ -130,24 +130,6 @@ const ProductStyles = styled.div`
     line-height: 10px;
     padding: 0 15px 0 0;
   }
-
-  button {
-    font-weight: 300;
-    font-size: 12px;
-    padding-bottom: 2px;
-    width: 140px;
-    background-color: #333;
-    color: white;
-    text-transform: uppercase;
-    border: none;
-    height: 36px;
-    cursor: pointer;
-    transition: all 0.25s ease;
-  }
-
-  button:hover {
-    background-color: black;
-  }
 `
 
 export default ProductStyles
