@@ -39,7 +39,6 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
     "dev": "gatsby develop -H 0.0.0.0 -p 8000",
     "lambda:start": "netlify-lambda serve src/lambda",
     "lambda:build": "netlify-lambda build src/lambda"
@@ -50,5 +49,10 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5"
   }
 }
