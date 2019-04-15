@@ -1,8 +1,22 @@
+// Proxy port 9000 to talk to netlify-lambda
+const proxy = require('http-proxy-middleware')
+
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
 module.exports = {
+  developMiddleware: app => {
+    app.use(
+      '/.netlify/functions/',
+      proxy({
+        target: 'http://localhost:9000',
+        pathRewrite: {
+          '/.netlify/functions/': '',
+        },
+      })
+    )
+  },
   siteMetadata: {
     siteUrl: `https://allourformerselves.com`,
     title: `FORMER SELVES`,

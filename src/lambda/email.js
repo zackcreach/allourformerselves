@@ -1,6 +1,10 @@
 const sendMail = require('sendmail')()
 const { validateEmail, validateLength } = require('../../utilities/validations')
 
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 exports.handler = (event, context, callback) => {
   if (!process.env.FORM_CONTACT_EMAIL) {
     return callback(null, {
@@ -13,28 +17,28 @@ exports.handler = (event, context, callback) => {
 
   try {
     validateLength('body.name', body.name, 3, 50)
-  } catch (e) {
+  } catch (error) {
     return callback(null, {
       statusCode: 403,
-      body: e.message,
+      body: error.message,
     })
   }
 
   try {
     validateEmail('body.email', body.email)
-  } catch (e) {
+  } catch (error) {
     return callback(null, {
       statusCode: 403,
-      body: e.message,
+      body: error.message,
     })
   }
 
   try {
-    validateLength('body.message', body.message, 10, 1000)
-  } catch (e) {
+    validateLength('body.message', body.message, 1, 2000)
+  } catch (error) {
     return callback(null, {
       statusCode: 403,
-      body: e.message,
+      body: error.message,
     })
   }
 
@@ -44,14 +48,14 @@ exports.handler = (event, context, callback) => {
     subject: `${
       body.name
     } sent you a message from the contact form via allourformerselves.com`,
-    text: body.message,
+    html: body.message,
   }
 
-  sendMail(descriptor, e => {
-    if (e) {
+  sendMail(descriptor, (error, reply) => {
+    if (error) {
       callback(null, {
         statusCode: 500,
-        body: e.message,
+        body: error.message,
       })
     } else {
       callback(null, {

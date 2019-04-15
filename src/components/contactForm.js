@@ -3,8 +3,8 @@ import React, { useState, useReducer } from 'react'
 import ContactFormStyles from './styles/contactFormStyles'
 
 const ContactForm = () => {
-  const [emailValid, setEmailValid] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
   const [userInput, setUserInput] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
     {
@@ -17,28 +17,18 @@ const ContactForm = () => {
   const handleChange = event => {
     const value = event.target.value
     const name = event.target.name
-
-    if (name === 'email') {
-      if (/(^\w.*@\w+\.\w)/.test(value)) {
-        setEmailValid(true)
-      } else {
-        setEmailValid(false)
-      }
-    }
-
     setUserInput({ [name]: value })
   }
 
   const handleSubmit = event => {
-    fetch('/.netlify/functions/contact', {
+    setSubmitting(true)
+
+    fetch('/.netlify/functions/email', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(userInput),
     })
-      .then(() => {
-        console.log('Message sent successfully!', userInput)
-        setSubmitted(true)
-      })
+      .then(() => (setSubmitted(true), setSubmitting(false)))
       .catch(error => alert(error))
 
     event.preventDefault()
@@ -94,7 +84,7 @@ const ContactForm = () => {
             required
           />
         </label>
-        <button disabled={!emailValid} type="submit">
+        <button disabled={submitting} type="submit">
           Send
         </button>
       </form>

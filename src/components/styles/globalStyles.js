@@ -117,6 +117,12 @@ const GlobalStyles = createGlobalStyle`
   button:hover {
     background-color: black;
   }
+
+  button:disabled {
+    opacity: 0.5;
+    background-color: #333;
+    cursor: wait;
+  }
 `
 
 export default GlobalStyles
