@@ -77,7 +77,6 @@ body.snip-open {
       width: 100%; } }
 
 .snip-layout {
-  background: rgba(0, 0, 0, 0.25);
   bottom: 0;
   color: #777;
   font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
@@ -89,7 +88,12 @@ body.snip-open {
   position: fixed;
   right: 0;
   top: 96px;
-  z-index: 1040;
+  display: block !important;
+  -webkit-transition: opacity 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  transition: opacity 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  background: rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  pointer-events: none;
   /**
     ICON
 
@@ -432,7 +436,7 @@ h4,
     .snip-layout select:hover {
       border-color: #333; }
   .snip-layout .snip-btn {
-    background-color: #555;
+    background-color: #333;
     border-radius: 0;
     border: 0;
     color: #fff;
@@ -441,22 +445,53 @@ h4,
     font-weight: 300;
     font-size: 12px;
     height: 36px;
-    line-height: 36px;
+    line-height: 34px;
     outline: 0;
     padding: 0 2em;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    display: block;
+    position: relative;
+    border: 1px solid #333;
+    -webkit-transition: color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition: color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    z-index: 0; }
     .snip-layout .snip-btn:hover {
-      background-color: #3c3c3c; }
+      color: black; }
     @media only screen and (min-width: 48em) {
       .snip-layout .snip-btn {
         font-size: 12px;
         padding: 0 2em; } }
+  .snip-layout .snip-btn::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: white;
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+    -webkit-transform-origin: right center;
+    transform-origin: right center;
+    -webkit-transition: -webkit-transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition: -webkit-transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86), -webkit-transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86); }
+  .snip-layout .snip-btn:hover::before {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+    -webkit-transform-origin: left center;
+    transform-origin: left center;
+    background-color: white; }
   .snip-layout .snip-btn--small {
     height: auto;
     line-height: normal;
     padding: .417em; }
   .snip-layout .snip-btn--highlight {
-    background: #333;
+    background: #111;
     color: #fff; }
     .snip-layout .snip-btn--highlight:hover {
       background-color: #1a1a1a; }
@@ -527,7 +562,7 @@ h4,
     text-transform: uppercase;
     font-size: 18px; }
   .snip-layout .snip-header {
-    background: black;
+    background: #111;
     padding: 0;
     height: 59px;
     position: relative;
@@ -610,7 +645,7 @@ h4,
   .snip-layout .snip-footer {
     display: none;
     visibility: hidden;
-    background: black;
+    background: #111;
     padding: .125em .625em;
     text-transform: uppercase; }
   .snip-layout .snip-footer__copyright {
@@ -1301,3 +1336,20 @@ h4,
       font-size: 16px; } }
   .snip-layout #snipcart-sub-layout {
     min-height: 100vh; }
+
+.snip-layout.snip-active {
+  opacity: 1;
+  z-index: 1040;
+  pointer-events: all; }
+
+.snip-layout__main-container {
+  -webkit-transition: -webkit-transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  transition: -webkit-transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86), -webkit-transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%); }
+
+.snip-active > .snip-layout__main-container {
+  -webkit-transform: translateX(0%);
+  transform: translateX(0%); }
