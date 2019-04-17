@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const FooterStyles = styled.footer`
-  background-color: black;
+  background-color: #111;
 
   .container {
     padding: 30px 30px 20px;
@@ -14,9 +14,9 @@ const FooterStyles = styled.footer`
   }
 
   .logo {
-    width: 100px;
+    width: 80px;
     justify-self: center;
-    margin: 0 0 20px;
+    margin: 5px 0 20px;
   }
 
   nav {

@@ -91,9 +91,9 @@ const Product = ({ data: { contentfulProduct: product } }) => {
                 />
                 <div className="options">
                   <h3 className="title">Colors</h3>
-                  <ul className="list" onClick={handleClick}>
+                  <div className="list" onClick={handleClick}>
                     {product.colors.map((node, index) => (
-                      <li
+                      <button
                         className="block"
                         key={node}
                         id={index}
@@ -101,32 +101,34 @@ const Product = ({ data: { contentfulProduct: product } }) => {
                         data-category="color"
                         style={{
                           backgroundColor: node,
-                          borderColor: activeColor === node && '#333',
+                          borderColor: activeColor === node && '#111',
                         }}
+                        type="button"
                       />
                     ))}
-                  </ul>
+                  </div>
                 </div>
                 <div className="options">
                   <h3 className="title">Sizes</h3>
-                  <ul className="list" onClick={handleClick}>
+                  <div className="list" onClick={handleClick}>
                     {product.sizes.map((node, index) => (
-                      <li
+                      <button
                         className="block"
                         key={node}
                         id={index}
                         title={node}
                         data-category="size"
                         style={{
-                          borderColor: activeSize === node && '#333',
-                          backgroundColor: activeSize === node && '#333',
+                          borderColor: activeSize === node && '#111',
+                          backgroundColor: activeSize === node && '#111',
                           color: activeSize === node && 'white',
                         }}
+                        type="button"
                       >
                         {node}
-                      </li>
+                      </button>
                     ))}
-                  </ul>
+                  </div>
                 </div>
                 <form>
                   <p>${product.price}</p>

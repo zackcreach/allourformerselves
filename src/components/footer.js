@@ -4,7 +4,7 @@ import React from 'react'
 
 import FooterStyles from './styles/footerStyles'
 
-import logo from '../images/logo--white.png'
+import logo from '../images/logo-white-200.png'
 
 const Footer = () => {
   const data = useStaticQuery(graphql`

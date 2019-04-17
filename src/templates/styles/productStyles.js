@@ -1,4 +1,13 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const moveOffRight = keyframes`
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+`
 
 const ProductStyles = styled.div`
   min-height: calc(100vh - 300px);
@@ -97,27 +106,16 @@ const ProductStyles = styled.div`
   }
 
   .list {
-    -webkit-tap-highlight-color: transparent;
   }
 
   .block {
-    font-size: 12px;
     width: 36px;
     height: 35px;
-    line-height: 26px;
-    font-weight: 300;
-    padding-top: 3px;
-    color: #333;
-    border: 1px solid #333;
-    transition: all 0.25s ease;
-    user-select: none;
     margin-right: -1px;
   }
 
-  .block[data-category='size']:hover,
-  .block[data-category='size']:active {
-    color: white;
-    background-color: #333;
+  .block[data-category='color']::before {
+    display: none;
   }
 
   form {
@@ -129,6 +127,52 @@ const ProductStyles = styled.div`
   form p {
     line-height: 10px;
     padding: 0 15px 0 0;
+  }
+
+  button {
+    font-weight: 300;
+    font-size: 12px;
+    padding-bottom: 2px;
+    width: 140px;
+    height: 36px;
+    color: black;
+    text-transform: uppercase;
+    transition: color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    position: relative;
+    border: 1px solid #111;
+    overflow: hidden;
+    z-index: 0;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    background-color: transparent;
+  }
+
+  button:hover {
+    color: white;
+  }
+
+  button::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: #111;
+    transform: scale(0, 1);
+    transform-origin: right center;
+    transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  }
+
+  button:hover::before {
+    transform: scale(1, 1);
+    transform-origin: left center;
+    background-color: #111;
   }
 `
 

@@ -63,7 +63,7 @@ const MenuStyles = styled.div`
     top: calc(100% + 1px);
     height: calc(100vh - 95px);
     width: 100%;
-    background: black;
+    background: #111;
 
     @media (min-width: 800px) {
       width: 300px;
@@ -87,7 +87,8 @@ const MenuStyles = styled.div`
   }
 
   .slide-right {
-    transition: transform ${props => props.animationDuration / 1000}s ease-out;
+    transition: transform ${props => props.animationDuration / 1000}s
+      cubic-bezier(0.785, 0.135, 0.15, 0.86);
   }
 
   .slide-right-enter {

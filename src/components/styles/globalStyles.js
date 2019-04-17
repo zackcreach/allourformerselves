@@ -105,22 +105,50 @@ const GlobalStyles = createGlobalStyle`
     font-size: 12px;
     padding-bottom: 2px;
     width: 140px;
-    background-color: #333;
-    color: white;
-    text-transform: uppercase;
-    border: none;
     height: 36px;
+    color: black;
+    text-transform: uppercase;
+    transition: color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    position: relative;
+    border: 1px solid #111;
+    overflow: hidden;
+    z-index: 0;
     cursor: pointer;
-    transition: all 0.25s ease;
+    outline: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    background-color: transparent;
   }
 
   button:hover {
-    background-color: black;
+    color: white;
+  }
+
+  button::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: #111;
+    transform: scale(0, 1);
+    transform-origin: right center;
+    transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  }
+
+  button:hover::before {
+    transform: scale(1, 1);
+    transform-origin: left center;
+    background-color: #111;
   }
 
   button:disabled {
     opacity: 0.5;
-    background-color: #333;
+    background-color: #111;
     cursor: wait;
   }
 `
