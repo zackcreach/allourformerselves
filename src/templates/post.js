@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import ReactDOM from 'react-dom'
 import { graphql } from 'gatsby'
 import { get } from 'lodash-es'
 
-import Layout from '../components/layout'
 import SEO from '../components/seo'
+import ContactForm from '../components/contactForm'
 
 import PostStyles from './styles/postStyles'
 
@@ -17,30 +18,43 @@ const Post = ({ data: { contentfulPost: post } }) => {
   const image =
     get(post, 'metaImage.fixed.src') || get(post, 'mainImage.fixed.src')
 
+  // ComponentDidMount
   useEffect(() => {
     setModifiedHtml(
       post.content.childMarkdownRemark.html.replace(/<a/g, `<a target='_blank'`)
     )
   }, [])
 
+  // ComponentDidUpdate
+  useEffect(() => {
+    renderContactForm()
+  })
+
+  const renderContactForm = () => {
+    const modules = document.querySelectorAll('.module-contact')
+
+    if (modules.length > 0) {
+      const modulesArray = Array.from(modules)
+      modulesArray.map(node => ReactDOM.render(<ContactForm />, node))
+    }
+  }
+
   return (
-    <Layout>
+    <PostStyles>
       <SEO
         title={title}
         description={description}
         image={image}
         keywords={[`All Our Former Selves`]}
       />
-      <PostStyles>
-        <main>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: modifiedHtml,
-            }}
-          />
-        </main>
-      </PostStyles>
-    </Layout>
+      <main>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: modifiedHtml,
+          }}
+        />
+      </main>
+    </PostStyles>
   )
 }
 

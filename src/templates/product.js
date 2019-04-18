@@ -4,7 +4,6 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import { get } from 'lodash-es'
 import Img from 'gatsby-image'
 
-import Layout from '../components/layout'
 import SEO from '../components/seo'
 
 import ProductStyles from './styles/productStyles'
@@ -42,121 +41,119 @@ const Product = ({ data: { contentfulProduct: product } }) => {
   }
 
   return (
-    <Layout>
+    <ProductStyles activeImage={activeImage}>
       <SEO
         title={title}
         description={description}
         image={image}
         keywords={[`All Our Former Selves`]}
       />
-      <ProductStyles activeImage={activeImage}>
-        <main>
-          <section className="container">
-            <div className="left">
-              <div className="gallery">
-                {product.images.map((node, index) => (
-                  <div
-                    className="gallery-image-container"
-                    onClick={handleClick}
-                    key={node.fluid.src}
-                    id={index}
-                  >
-                    <Img className="gallery-image" fluid={node.fluid} />
-                  </div>
-                ))}
-              </div>
-              <div className="viewer">
-                <TransitionGroup>
-                  <CSSTransition
-                    className="viewer-container"
-                    classNames="mask"
-                    timeout={{
-                      enter: animationDuration,
-                      exit: animationDuration,
-                    }}
-                  >
-                    <Img className="viewer-image" fluid={activeImage.fluid} />
-                  </CSSTransition>
-                </TransitionGroup>
-              </div>
-            </div>
-            <div className="right">
-              <div className="right__container" ref={rightRef}>
-                <h1>{product.title}</h1>
+      <main>
+        <section className="container">
+          <div className="left">
+            <div className="gallery">
+              {product.images.map((node, index) => (
                 <div
-                  className="description"
-                  dangerouslySetInnerHTML={{
-                    __html: product.description.childMarkdownRemark.html,
-                  }}
-                />
-                <div className="options">
-                  <h3 className="title">Colors</h3>
-                  <div className="list" onClick={handleClick}>
-                    {product.colors.map((node, index) => (
-                      <button
-                        className="block"
-                        key={node}
-                        id={index}
-                        title={node}
-                        data-category="color"
-                        style={{
-                          backgroundColor: node,
-                          borderColor: activeColor === node && '#111',
-                        }}
-                        type="button"
-                      />
-                    ))}
-                  </div>
+                  className="gallery-image-container"
+                  onClick={handleClick}
+                  key={node.fluid.src}
+                  id={index}
+                >
+                  <Img className="gallery-image" fluid={node.fluid} />
                 </div>
-                <div className="options">
-                  <h3 className="title">Sizes</h3>
-                  <div className="list" onClick={handleClick}>
-                    {product.sizes.map((node, index) => (
-                      <button
-                        className="block"
-                        key={node}
-                        id={index}
-                        title={node}
-                        data-category="size"
-                        style={{
-                          borderColor: activeSize === node && '#111',
-                          backgroundColor: activeSize === node && '#111',
-                          color: activeSize === node && 'white',
-                        }}
-                        type="button"
-                      >
-                        {node}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                <form>
-                  <p>${product.price}</p>
-                  <button
-                    className="snipcart-add-item"
-                    data-item-id={product.slug}
-                    data-item-name={product.title}
-                    data-item-price={product.price}
-                    data-item-weight="150"
-                    data-item-url={activeUrl}
-                    data-item-image={image}
-                    data-item-custom1-name="Size"
-                    data-item-custom1-options={product.sizes.join('|')}
-                    data-item-custom1-value={activeSize}
-                    data-item-custom2-name="Color"
-                    data-item-custom2-options={product.colors.join('|')}
-                    data-item-custom2-value={activeColor}
-                    type="button"
-                  >
-                    Add to Cart
-                  </button>
-                </form>
-              </div>
+              ))}
             </div>
-          </section>
-        </main>
-      </ProductStyles>
-    </Layout>
+            <div className="viewer">
+              <TransitionGroup>
+                <CSSTransition
+                  className="viewer-container"
+                  classNames="mask"
+                  timeout={{
+                    enter: animationDuration,
+                    exit: animationDuration,
+                  }}
+                >
+                  <Img className="viewer-image" fluid={activeImage.fluid} />
+                </CSSTransition>
+              </TransitionGroup>
+            </div>
+          </div>
+          <div className="right">
+            <div className="right__container" ref={rightRef}>
+              <h1>{product.title}</h1>
+              <div
+                className="description"
+                dangerouslySetInnerHTML={{
+                  __html: product.description.childMarkdownRemark.html,
+                }}
+              />
+              <div className="options">
+                <h3 className="title">Colors</h3>
+                <div className="list" onClick={handleClick}>
+                  {product.colors.map((node, index) => (
+                    <button
+                      className="block"
+                      key={node}
+                      id={index}
+                      title={node}
+                      data-category="color"
+                      style={{
+                        backgroundColor: node,
+                        borderColor: activeColor === node && '#111',
+                      }}
+                      type="button"
+                    />
+                  ))}
+                </div>
+              </div>
+              <div className="options">
+                <h3 className="title">Sizes</h3>
+                <div className="list" onClick={handleClick}>
+                  {product.sizes.map((node, index) => (
+                    <button
+                      className="block"
+                      key={node}
+                      id={index}
+                      title={node}
+                      data-category="size"
+                      style={{
+                        borderColor: activeSize === node && '#111',
+                        backgroundColor: activeSize === node && '#111',
+                        color: activeSize === node && 'white',
+                      }}
+                      type="button"
+                    >
+                      {node}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <form>
+                <p>${product.price}</p>
+                <button
+                  className="snipcart-add-item"
+                  data-item-id={product.slug}
+                  data-item-name={product.title}
+                  data-item-price={product.price}
+                  data-item-weight="150"
+                  data-item-url={activeUrl}
+                  data-item-image={image}
+                  data-item-custom1-name="Size"
+                  data-item-custom1-options={product.sizes.join('|')}
+                  data-item-custom1-value={activeSize}
+                  data-item-custom2-name="Color"
+                  data-item-custom2-options={product.colors.join('|')}
+                  data-item-custom2-value={activeColor}
+                  type="button"
+                >
+                  Add to Cart
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+    </ProductStyles>
   )
 }
 

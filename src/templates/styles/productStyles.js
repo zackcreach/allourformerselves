@@ -1,17 +1,6 @@
-import styled, { keyframes } from 'styled-components'
-
-const moveOffRight = keyframes`
-  from {
-    transform: translateX(0%);
-  }
-  to {
-    transform: translateX(100%);
-  }
-`
+import styled from 'styled-components'
 
 const ProductStyles = styled.div`
-  min-height: calc(100vh - 300px);
-
   .container {
     @media (min-width: 800px) {
       display: flex;

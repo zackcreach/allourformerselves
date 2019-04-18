@@ -6,10 +6,10 @@ import HeaderStyles from './styles/headerStyles'
 import Menu from './menu'
 import logo from '../images/logo-black-200.png'
 
-const Header = ({ siteTitle }) => {
+const Header = ({ headerRef }) => {
   return (
     <HeaderStyles>
-      <div className="container">
+      <div className="container" ref={headerRef}>
         <Menu />
         <Link className="logo-link" to="/">
           <img className="logo" src={logo} alt="All Our Former Selves logo" />
@@ -33,12 +33,8 @@ const Header = ({ siteTitle }) => {
   )
 }
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
+Header.propTypes = {}
 
-Header.defaultProps = {
-  siteTitle: ``,
-}
+Header.defaultProps = {}
 
 export default Header
