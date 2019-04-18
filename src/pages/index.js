@@ -3,7 +3,6 @@ import { Link, graphql } from 'gatsby'
 import { get } from 'lodash-es'
 import Img from 'gatsby-image'
 
-import Layout from '../components/layout'
 import SEO from '../components/seo'
 
 import IndexStyles from './styles/indexStyles'
@@ -17,42 +16,40 @@ const IndexPage = ({
     get(page, 'metaImage.fixed.src') || get(page, 'mainImage.fixed.src')
 
   return (
-    <Layout>
+    <IndexStyles>
       <SEO
         title={title}
         description={description}
         image={image}
         keywords={[`All Our Former Selves`]}
       />
-      <IndexStyles>
-        <Img
-          fluid={page.mainImage.fluid}
-          imgStyle={{ objectPosition: 'center top' }}
-          className="hero"
-        />
-        <main>
-          <ul>
-            {products.edges.map(({ node }, index) => (
-              <li key={node.title}>
-                <Link to={node.slug}>
-                  <figure>
-                    <Img
-                      fluid={node.mainImage.fluid}
-                      className="thumbnail"
-                      alt={node.title}
-                    />
-                    <figcaption>
-                      <h3>{node.title}</h3>
-                      <p>${node.price}</p>
-                    </figcaption>
-                  </figure>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </main>
-      </IndexStyles>
-    </Layout>
+      <Img
+        fluid={page.mainImage.fluid}
+        imgStyle={{ objectPosition: 'center top' }}
+        className="hero"
+      />
+      <main>
+        <ul>
+          {products.edges.map(({ node }, index) => (
+            <li key={node.title}>
+              <Link to={node.slug}>
+                <figure>
+                  <Img
+                    fluid={node.mainImage.fluid}
+                    className="thumbnail"
+                    alt={node.title}
+                  />
+                  <figcaption>
+                    <h3>{node.title}</h3>
+                    <p>${node.price}</p>
+                  </figcaption>
+                </figure>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </main>
+    </IndexStyles>
   )
 }
 

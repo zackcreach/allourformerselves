@@ -32,7 +32,7 @@ const MenuStyles = styled.div`
 
   .mask {
     position: fixed;
-    top: 96px;
+    top: var(--headerHeight);
     right: 0;
     bottom: 0;
     left: 0;
@@ -61,7 +61,7 @@ const MenuStyles = styled.div`
     padding: 0;
     left: 0;
     top: calc(100% + 1px);
-    height: calc(100vh - 95px);
+    height: calc(100vh - var(--headerHeight));
     width: 100%;
     background: #111;
 
@@ -109,8 +109,11 @@ const MenuStyles = styled.div`
 `
 
 MenuStyles.propTypes = {
-  containerRef: PropTypes.string,
   animationDuration: PropTypes.number,
+}
+
+MenuStyles.defaultProps = {
+  headerHeight: 0,
 }
 
 export default MenuStyles

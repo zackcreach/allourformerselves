@@ -6,7 +6,7 @@ import FooterStyles from './styles/footerStyles'
 
 import logo from '../images/logo-white-200.png'
 
-const Footer = () => {
+const Footer = ({ footerRef }) => {
   const data = useStaticQuery(graphql`
     query FooterQuery {
       allContentfulPage(sort: { fields: [order, title], order: [ASC, ASC] }) {
@@ -22,7 +22,7 @@ const Footer = () => {
   `)
 
   return (
-    <FooterStyles>
+    <FooterStyles ref={footerRef}>
       <div className="container">
         <Link className="logo-link" to="/">
           <img className="logo" src={logo} alt="All Our Former Selves logo" />

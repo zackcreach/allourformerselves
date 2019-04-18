@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import { graphql } from 'gatsby'
 import { get } from 'lodash-es'
 
-import Layout from '../components/layout'
 import ContactForm from '../components/contactForm'
 import SEO from '../components/seo'
 
@@ -45,23 +44,21 @@ const Page = ({ data: { contentfulPage: page } }) => {
   }
 
   return (
-    <Layout>
+    <PageStyles>
       <SEO
         title={title}
         description={description}
         image={image}
         keywords={[`All Our Former Selves`]}
       />
-      <PageStyles>
-        <main>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: modifiedHtml,
-            }}
-          />
-        </main>
-      </PageStyles>
-    </Layout>
+      <main>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: modifiedHtml,
+          }}
+        />
+      </main>
+    </PageStyles>
   )
 }
 

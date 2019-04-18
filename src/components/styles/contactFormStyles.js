@@ -13,6 +13,23 @@ const ContactFormStyles = styled.div`
   button {
     margin-top: 10px;
   }
+
+  button {
+    color: white;
+    background-color: #111;
+  }
+
+  button:hover {
+    color: #111;
+  }
+
+  button::before {
+    background-color: white;
+  }
+
+  button:hover::before {
+    background-color: white;
+  }
 `
 
 export default ContactFormStyles

@@ -5,7 +5,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 import MenuStyles from './styles/menuStyles'
 
-const Menu = ({ siteTitle, containerHeight }) => {
+const Menu = ({ siteTitle }) => {
   const [showMenu, setShowMenu] = useState(false)
 
   const navRef = useRef()
@@ -91,13 +91,8 @@ const Menu = ({ siteTitle, containerHeight }) => {
   )
 }
 
-Menu.propTypes = {
-  siteTitle: PropTypes.string,
-  containerHeight: PropTypes.string,
-}
+Menu.propTypes = {}
 
-Menu.defaultProps = {
-  siteTitle: ``,
-}
+Menu.defaultProps = {}
 
 export default Menu

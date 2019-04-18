@@ -2,6 +2,11 @@ import { createGlobalStyle } from 'styled-components'
 import '../../../static/fonts/IBMPlexSans.css'
 
 const GlobalStyles = createGlobalStyle`
+  :root {
+    --headerHeight: 96px;
+    --footerHeight: 202px;
+  }
+
   html {
     box-sizing: border-box;
     font-size: 10px;
@@ -30,9 +35,13 @@ const GlobalStyles = createGlobalStyle`
   }
 
   main {
-    padding: 40px 30px 120px;
+    padding: 40px 30px 50px;
     margin: 0 auto;
     max-width: 1200px;
+
+    @media (min-width: 500px) {
+    padding: 40px 30px 120px;
+    }
   }
 
   h1 {
@@ -100,6 +109,10 @@ const GlobalStyles = createGlobalStyle`
     padding-top: 6px;
   }
 
+  form {
+    margin-bottom: 30px;
+  }
+
   button {
     font-weight: 300;
     font-size: 12px;
@@ -150,6 +163,21 @@ const GlobalStyles = createGlobalStyle`
     opacity: 0.5;
     background-color: #111;
     cursor: wait;
+  }
+
+  .snip-layout.snip-active {
+    opacity: 1;
+    z-index: 1040;
+    pointer-events: all;
+  }
+
+  .snip-layout__main-container {
+      transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+      transform: translateX(100%);
+  }
+
+  .snip-active > .snip-layout__main-container {
+      transform: translateX(0%);
   }
 `
 
