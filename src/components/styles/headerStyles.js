@@ -38,6 +38,26 @@ const HeaderStyles = styled.header`
     top: 50%;
     transform: translateY(-50%);
   }
+
+  .snipcart-summary {
+    position: absolute;
+    top: -14px;
+    left: 9.5px;
+    width: 14px;
+    text-align: center;
+    font-size: 11px;
+    transition: opacity 0.45s var(--transition-bezier);
+    opacity: 1;
+  }
+
+  .snipcart-summary-empty {
+    opacity: 0;
+    transition: none;
+  }
+
+  .snipcart-total-items {
+    display: block;
+  }
 `
 
 export default HeaderStyles

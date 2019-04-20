@@ -11,7 +11,7 @@ const Menu = ({ siteTitle }) => {
   const navRef = useRef()
   const figureRef = useRef()
 
-  const animationDuration = 300
+  const animationDuration = 450
 
   const data = useStaticQuery(graphql`
     query MenuQuery {

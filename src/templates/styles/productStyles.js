@@ -126,7 +126,7 @@ const ProductStyles = styled.div`
     height: 36px;
     color: black;
     text-transform: uppercase;
-    transition: color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition: color 0.45s var(--transition-bezier);
     position: relative;
     border: 1px solid #111;
     overflow: hidden;
@@ -155,7 +155,7 @@ const ProductStyles = styled.div`
     background-color: #111;
     transform: scale(0, 1);
     transform-origin: right center;
-    transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition: transform 0.45s var(--transition-bezier);
   }
 
   button:hover::before {
