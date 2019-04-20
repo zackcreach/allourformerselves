@@ -5,6 +5,7 @@ const GlobalStyles = createGlobalStyle`
   :root {
     --headerHeight: 96px;
     --footerHeight: 202px;
+    --transition-bezier: cubic-bezier(0.785, 0.135, 0.15, 0.86);
   }
 
   html {
@@ -121,7 +122,7 @@ const GlobalStyles = createGlobalStyle`
     height: 36px;
     color: black;
     text-transform: uppercase;
-    transition: color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition: color 0.45s var(--transition-bezier);
     position: relative;
     border: 1px solid #111;
     overflow: hidden;
@@ -150,7 +151,7 @@ const GlobalStyles = createGlobalStyle`
     background-color: #111;
     transform: scale(0, 1);
     transform-origin: right center;
-    transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition: transform 0.45s var(--transition-bezier);
   }
 
   button:hover::before {
@@ -166,13 +167,16 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .snip-layout.snip-active {
-    opacity: 1;
     z-index: 1040;
     pointer-events: all;
   }
 
+  .snip-layout.snip-active::before {
+    opacity: 1;
+  }
+
   .snip-layout__main-container {
-      transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+      transition: transform 0.45s var(--transition-bezier);
       transform: translateX(100%);
   }
 

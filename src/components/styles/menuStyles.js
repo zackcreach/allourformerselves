@@ -88,7 +88,7 @@ const MenuStyles = styled.div`
 
   .slide-right {
     transition: transform ${props => props.animationDuration / 1000}s
-      cubic-bezier(0.785, 0.135, 0.15, 0.86);
+      var(--transition-bezier);
   }
 
   .slide-right-enter {
