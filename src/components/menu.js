@@ -12,12 +12,7 @@ const Menu = ({ siteTitle }) => {
   const navRef = useRef()
   const menuRef = useRef()
 
-  const animationDuration =
-    Number(
-      getComputedStyle(document.documentElement)
-        .getPropertyValue('--transition-duration')
-        .replace(/s|0|\./g, '')
-    ) * 10
+  const animationDuration = 450
 
   const data = useStaticQuery(graphql`
     query MenuQuery {
