@@ -23,11 +23,14 @@ const IndexPage = ({
         image={image}
         keywords={[`All Our Former Selves`]}
       />
-      <Img
-        fluid={page.mainImage.fluid}
-        imgStyle={{ objectPosition: 'center top' }}
-        className="hero"
-      />
+      <figure>
+        <Img
+          fluid={page.mainImage.fluid}
+          imgStyle={{ objectPosition: 'center top' }}
+          className="hero"
+        />
+        <div className="arrow-down" />
+      </figure>
       <main>
         <ul>
           {products.edges.map(({ node }, index) => (

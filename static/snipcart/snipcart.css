@@ -88,7 +88,7 @@ body.snip-open {
   position: fixed;
   right: 0;
   top: 96px;
-  top: var(--headerHeight);
+  top: var(--header-height);
   display: block !important;
   pointer-events: none;
   /**
@@ -342,8 +342,8 @@ body.snip-open {
     height: 100%;
     opacity: 0;
     background: rgba(0, 0, 0, 0.25);
-    -webkit-transition: opacity 0.45s ease-out;
-    transition: opacity 0.45s ease-out; }
+    -webkit-transition: opacity var(--transition-duration) ease-out;
+    transition: opacity var(--transition-duration) ease-out; }
   .snip-layout .snip-ico {
     -webkit-font-smoothing: antialiased;
     font-family: "Snipcart";
@@ -367,8 +367,43 @@ body.snip-open {
     content: ""; }
   .snip-layout .snip-ico--check:before {
     content: ""; }
+  .snip-layout .snip-ico--close {
+    display: block;
+    border: none;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 24px;
+    height: 18px;
+    cursor: pointer; }
   .snip-layout .snip-ico--close:before {
-    content: ""; }
+    position: absolute;
+    content: '';
+    height: 1px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    -webkit-transform: rotate(45deg) translate3d(6px, 6px, 0);
+    transform: rotate(45deg) translate3d(6px, 6px, 0);
+    -webkit-transition: -webkit-transform var(--transition-duration) var(--transition-bezier);
+    transition: -webkit-transform var(--transition-duration) var(--transition-bezier);
+    transition: transform var(--transition-duration) var(--transition-bezier);
+    transition: transform var(--transition-duration) var(--transition-bezier), -webkit-transform var(--transition-duration) var(--transition-bezier); }
+  .snip-layout .snip-ico--close:after {
+    position: absolute;
+    content: '';
+    height: 1px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    -webkit-transform: rotate(-45deg) translate3d(6px, -6px, 0);
+    transform: rotate(-45deg) translate3d(6px, -6px, 0);
+    -webkit-transition: -webkit-transform var(--transition-duration) var(--transition-bezier);
+    transition: -webkit-transform var(--transition-duration) var(--transition-bezier);
+    transition: transform var(--transition-duration) var(--transition-bezier);
+    transition: transform var(--transition-duration) var(--transition-bezier), -webkit-transform var(--transition-duration) var(--transition-bezier); }
   .snip-layout div,
   .snip-layout span,
   .snip-layout h1,
@@ -462,8 +497,8 @@ h4,
     display: block;
     position: relative;
     border: 1px solid #333;
-    -webkit-transition: color 0.45s var(--transition-bezier);
-    transition: color 0.45s var(--transition-bezier);
+    -webkit-transition: color var(--transition-duration) var(--transition-bezier);
+    transition: color var(--transition-duration) var(--transition-bezier);
     z-index: 0; }
     .snip-layout .snip-btn:hover {
       color: black; }
@@ -486,10 +521,10 @@ h4,
     transform: scale(0, 1);
     -webkit-transform-origin: right center;
     transform-origin: right center;
-    -webkit-transition: -webkit-transform 0.45s var(--transition-bezier);
-    transition: -webkit-transform 0.45s var(--transition-bezier);
-    transition: transform 0.45s var(--transition-bezier);
-    transition: transform 0.45s var(--transition-bezier), -webkit-transform 0.45s var(--transition-bezier); }
+    -webkit-transition: -webkit-transform var(--transition-duration) var(--transition-bezier);
+    transition: -webkit-transform var(--transition-duration) var(--transition-bezier);
+    transition: transform var(--transition-duration) var(--transition-bezier);
+    transition: transform var(--transition-duration) var(--transition-bezier), -webkit-transform var(--transition-duration) var(--transition-bezier); }
   .snip-layout .snip-btn:hover::before {
     -webkit-transform: scale(1, 1);
     transform: scale(1, 1);
@@ -530,13 +565,12 @@ h4,
     padding: .333em;
     padding: 0;
     position: absolute;
-    right: 20px;
-    top: 13px;
+    right: 40px;
+    top: 20px;
     z-index: 2; }
     @media only screen and (min-width: 48em) {
       .snip-layout .snip-layout__close {
-        font-size: 1.5em;
-        top: 13px; }
+        font-size: 1.5em; }
         .snip-layout .snip-layout__close.js-hidden {
           display: none; } }
   .snip-layout .snip-layout__loading {
@@ -868,16 +902,18 @@ h4,
   .snip-layout .snip-product__remove {
     color: #f10;
     font-size: 30px;
-    position: static; }
+    position: relative; }
     @media only screen and (max-width: 48em) {
       .snip-layout .snip-product__remove {
         position: absolute;
-        right: 0.28571em;
-        top: 0.57143em; } }
+        right: 0.35714em;
+        top: 0.8em; } }
     @media only screen and (min-width: 48em) {
       .snip-layout .snip-product__remove {
         float: left;
         margin: -.154em .192em 0 0; } }
+  .snip-layout .snip-product__remove::before, .snip-layout .snip-product__remove::after {
+    background-color: red; }
   .snip-layout .snip-product__remove--disabled {
     opacity: 0.2;
     cursor: default; }
@@ -885,8 +921,9 @@ h4,
     .snip-layout .snip-product__customfields {
       max-width: 200px; } }
   .snip-layout .snip-product__customfields-checkbox {
-    float: left;
-    margin: 0 .5em .75em 0; }
+    width: 20px;
+    height: 20px;
+    float: left; }
   .snip-layout .snip-product__empty {
     font-size: 1.4rem;
     padding: 2em 2em;

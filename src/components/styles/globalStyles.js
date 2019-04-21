@@ -3,8 +3,14 @@ import '../../../static/fonts/IBMPlexSans.css'
 
 const GlobalStyles = createGlobalStyle`
   :root {
-    --headerHeight: 96px;
-    --footerHeight: 202px;
+    --width-small: 400px;
+    --width-medium: 800px;
+    --width-large: 1200px;
+    
+    --header-height: 96px;
+    --footer-height: 202px;
+    
+    --transition-duration: 0.45s;
     --transition-bezier: cubic-bezier(0.785, 0.135, 0.15, 0.86);
   }
 
@@ -36,7 +42,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   main {
-    padding: 40px 30px 50px;
+    padding: 30px 30px 50px;
     margin: 0 auto;
     max-width: 1200px;
 
@@ -115,6 +121,12 @@ const GlobalStyles = createGlobalStyle`
   }
 
   button {
+    outline: none;
+    user-select: none;
+    background: transparent;
+  }
+
+  button[type='submit'] {
     font-weight: 300;
     font-size: 12px;
     padding-bottom: 2px;
@@ -134,11 +146,11 @@ const GlobalStyles = createGlobalStyle`
     background-color: transparent;
   }
 
-  button:hover {
+  button[type='submit']:hover {
     color: white;
   }
 
-  button::before {
+  button[type='submit']::before {
     position: absolute;
     content: '';
     top: 0;
@@ -154,13 +166,13 @@ const GlobalStyles = createGlobalStyle`
     transition: transform 0.45s var(--transition-bezier);
   }
 
-  button:hover::before {
+  button[type='submit']:hover::before {
     transform: scale(1, 1);
     transform-origin: left center;
     background-color: #111;
   }
 
-  button:disabled {
+  button[type='submit']:disabled {
     opacity: 0.5;
     background-color: #111;
     cursor: wait;

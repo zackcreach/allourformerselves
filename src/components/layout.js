@@ -17,11 +17,11 @@ const Layout = ({ children }) => {
   useLayoutEffect(() => {
     const root = document.documentElement
     root.style.setProperty(
-      '--headerHeight',
+      '--header-height',
       `${headerRef.current.offsetHeight}px`
     )
     root.style.setProperty(
-      '--footerHeight',
+      '--footer-height',
       `${footerRef.current.offsetHeight}px`
     )
   }, [headerRef, footerRef])

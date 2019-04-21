@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { useRef, useState, useEffect } from 'react'
+import { get } from 'lodash-es'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
@@ -9,9 +10,14 @@ const Menu = ({ siteTitle }) => {
   const [showMenu, setShowMenu] = useState(false)
 
   const navRef = useRef()
-  const figureRef = useRef()
+  const menuRef = useRef()
 
-  const animationDuration = 450
+  const animationDuration =
+    Number(
+      getComputedStyle(document.documentElement)
+        .getPropertyValue('--transition-duration')
+        .replace(/s|0|\./g, '')
+    ) * 10
 
   const data = useStaticQuery(graphql`
     query MenuQuery {
@@ -29,20 +35,22 @@ const Menu = ({ siteTitle }) => {
 
   useEffect(() => {
     window.addEventListener('click', handleClick)
+    window.addEventListener('keydown', handleKeydown)
 
     return () => {
       window.removeEventListener('click', handleClick)
+      window.removeEventListener('keydown', handleKeydown)
       setShowMenu(false)
     }
   }, [])
 
   const handleClick = event => {
-    if (event.target === figureRef.current) {
+    if (event.target === menuRef.current) {
       setShowMenu(prevMenu => !prevMenu)
     }
     if (
       event.target !== navRef.current &&
-      event.target !== figureRef.current &&
+      event.target !== menuRef.current &&
       event.target.parentElement !== navRef.current
     ) {
       setShowMenu(prevMenu => (prevMenu ? !prevMenu : prevMenu))
@@ -52,9 +60,17 @@ const Menu = ({ siteTitle }) => {
     }
   }
 
+  const handleKeydown = event => {
+    if (get(event, 'keyCode', 0) === 27) {
+      setShowMenu(false)
+    }
+  }
+
   return (
-    <MenuStyles animationDuration={animationDuration}>
-      <figure ref={figureRef} />
+    <MenuStyles animationDuration={animationDuration} showMenu={showMenu}>
+      <button className="menu" ref={menuRef} type="button" tabIndex="0">
+        <div className="menu__middle" />
+      </button>
       <TransitionGroup>
         {showMenu && (
           <CSSTransition
