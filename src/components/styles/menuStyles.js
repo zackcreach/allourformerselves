@@ -52,6 +52,7 @@ const MenuStyles = styled.div`
     background-color: #333;
     transition: opacity var(--transition-duration) var(--transition-bezier);
     opacity: ${props => (props.showMenu ? 0 : 1)};
+    pointer-events: none;
   }
 
   .mask__content {
