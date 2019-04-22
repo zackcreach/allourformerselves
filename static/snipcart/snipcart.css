@@ -615,7 +615,7 @@ h4,
       .snip-layout .snip-header {
         text-align: center; } }
   .snip-layout .snip-header__user {
-    background: black;
+    background: #111;
     font-size: 14px;
     padding: .714em 1.429em;
     text-align: center; }
@@ -631,7 +631,7 @@ h4,
     white-space: nowrap;
     display: -webkit-box;
     display: flex;
-    background: black;
+    background: #111;
     font-size: 14px;
     padding: .714em 1.429em; }
   .snip-layout .snip-header__back--button {
@@ -659,7 +659,7 @@ h4,
         position: absolute;
         text-align: left; } }
   .snip-layout .snip-header__total {
-    background: black;
+    background: #111;
     border-radius: 5px;
     display: inline-block;
     padding: 20px 1em 0;
