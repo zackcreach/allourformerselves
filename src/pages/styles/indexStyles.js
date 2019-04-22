@@ -1,8 +1,50 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const annoyAnimation = keyframes`
+  0% {
+    bottom: 17%;
+    opacity: 0;
+  }
+  50% {
+    bottom: 15%;
+    opacity: 1;
+  }
+  100% {
+    bottom: 13%;
+    opacity: 0;
+  }
+`
 
 const IndexStyles = styled.div`
   .hero {
-    height: calc(100vh - 92px);
+    height: calc(65vh - var(--header-height));
+
+    @media (min-width: 800px) {
+      height: calc(100vh - var(--header-height));
+    }
+  }
+
+  figure {
+    position: relative;
+  }
+
+  .arrow-down {
+    position: absolute;
+    content: '';
+    left: 50%;
+    transform: rotate(-45deg) translateX(-50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid #666;
+    border-top: none;
+    border-right: none;
+    border-radius: 2px;
+    animation: ${annoyAnimation} 2s infinite linear;
+
+    @media (min-width: 800px) {
+      width: 30px;
+      height: 30px;
+    }
   }
 
   main {

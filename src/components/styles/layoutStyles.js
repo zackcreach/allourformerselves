@@ -1,17 +1,10 @@
 import styled from 'styled-components'
 
 const LayoutStyles = styled.div`
-  min-height: calc(100vh - 202px);
-  min-height: calc(100vh - var(--footerHeight));
-  padding-top: 50px;
-
-  @media (min-width: 500px) {
-    padding-top: 92px;
-  }
+  min-height: calc(100vh - var(--footer-height));
+  padding-top: var(--header-height);
 `
 
-LayoutStyles.defaultProps = {
-  footerHeight: 0,
-}
+LayoutStyles.defaultProps = {}
 
 export default LayoutStyles

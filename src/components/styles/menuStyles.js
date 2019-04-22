@@ -2,27 +2,56 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 const MenuStyles = styled.div`
-  figure {
+  .menu {
+    display: block;
+    border: none;
     position: absolute;
     margin: 0;
+    padding: 0;
     width: 28px;
     height: 18px;
     top: 50%;
     left: 30px;
     transform: translate3d(0, -50%, 0);
-    border-top: 1px solid #333;
-    border-bottom: 1px solid #333;
     cursor: pointer;
+
+    &::before {
+      position: absolute;
+      content: '';
+      height: 1px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      background-color: #333;
+      transform: ${props =>
+        props.showMenu ? 'rotate(45deg) translate3d(6px, 6px, 0)' : 'none'};
+      transition: transform var(--transition-duration) var(--transition-bezier);
+    }
 
     &::after {
       position: absolute;
       content: '';
       height: 1px;
-      top: 50%;
+      left: 0;
+      bottom: 0;
       width: 100%;
-      transform: translate3d(0, -50%, 0);
       background-color: #333;
+      transform: ${props =>
+        props.showMenu ? 'rotate(-45deg) translate3d(6px, -6px, 0)' : 'none'};
+      transition: transform var(--transition-duration) var(--transition-bezier);
     }
+  }
+
+  .menu__middle {
+    position: absolute;
+    content: '';
+    height: 1px;
+    top: 50%;
+    width: 100%;
+    transform: translate3d(0, -50%, 0);
+    background-color: #333;
+    transition: opacity var(--transition-duration) var(--transition-bezier);
+    opacity: ${props => (props.showMenu ? 0 : 1)};
   }
 
   .mask__content {
@@ -32,7 +61,7 @@ const MenuStyles = styled.div`
 
   .mask {
     position: fixed;
-    top: var(--headerHeight);
+    top: var(--header-height);
     right: 0;
     bottom: 0;
     left: 0;
@@ -61,7 +90,7 @@ const MenuStyles = styled.div`
     padding: 0;
     left: 0;
     top: calc(100% + 1px);
-    height: calc(100vh - var(--headerHeight));
+    height: calc(100vh - var(--header-height));
     width: 100%;
     background: #111;
 
@@ -110,10 +139,9 @@ const MenuStyles = styled.div`
 
 MenuStyles.propTypes = {
   animationDuration: PropTypes.number,
+  showMenu: PropTypes.bool,
 }
 
-MenuStyles.defaultProps = {
-  headerHeight: 0,
-}
+MenuStyles.defaultProps = {}
 
 export default MenuStyles

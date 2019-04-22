@@ -41,13 +41,19 @@ const HeaderStyles = styled.header`
 
   .snipcart-summary {
     position: absolute;
-    top: -14px;
+    top: -9px;
     left: 9.5px;
     width: 14px;
     text-align: center;
-    font-size: 11px;
+    font-size: 9px;
     transition: opacity 0.45s var(--transition-bezier);
+    color: #666;
     opacity: 1;
+
+    @media (min-width: 500px) {
+      top: -12px;
+      font-size: 10px;
+    }
   }
 
   .snipcart-summary-empty {
