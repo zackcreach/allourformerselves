@@ -35,7 +35,7 @@ const IndexPage = ({
         <ul>
           {products.edges.map(({ node }, index) => (
             <li key={node.title}>
-              <Link to={node.slug}>
+              <Link to={`/${node.slug}`}>
                 <figure>
                   <Img
                     fluid={node.mainImage.fluid}
