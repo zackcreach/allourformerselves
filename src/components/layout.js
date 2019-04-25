@@ -1,11 +1,8 @@
-import React, { useRef, useLayoutEffect, useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { get } from 'lodash-es'
 import { useStaticQuery, graphql, withPrefix } from 'gatsby'
-
-import favicon from '../images/favicon.png'
-import faviconApple from '../images/favicon-apple.png'
 
 import Header from './header'
 import Footer from './footer'
@@ -56,21 +53,12 @@ const Layout = ({ children }) => {
             type: 'text/css',
           },
           {
-            href: favicon,
+            href: withPrefix('/images/favicon.png'),
             rel: 'shortcut icon',
           },
           {
-            href: faviconApple,
-            rel: 'apple-touch-icon',
-          },
-          {
-            href: faviconApple,
-            sizes: '114x114',
-            rel: 'apple-touch-icon',
-          },
-          {
-            href: faviconApple,
-            sizes: '72x72',
+            href: withPrefix('/images/favicon-apple.png'),
+            sizes: '180x180',
             rel: 'apple-touch-icon',
           },
         ]}
