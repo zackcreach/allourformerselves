@@ -87,7 +87,7 @@ const Menu = ({ siteTitle }) => {
               {data.allContentfulPage.edges.map(({ node }) => {
                 if (node.visibleInMenu) {
                   return (
-                    <Link to={node.slug} key={node.title}>
+                    <Link to={`/${node.slug}`} key={node.title}>
                       {node.title}
                     </Link>
                   )

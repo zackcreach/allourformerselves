@@ -31,7 +31,7 @@ const Footer = ({ footerRef }) => {
           {data.allContentfulPage.edges.map(({ node }) => {
             if (node.visibleInFooter) {
               return (
-                <Link to={node.slug} key={node.title}>
+                <Link to={`/${node.slug}`} key={node.title}>
                   {node.title}
                 </Link>
               )

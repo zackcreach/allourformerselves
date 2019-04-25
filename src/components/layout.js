@@ -1,9 +1,11 @@
-import React, { useRef, useLayoutEffect } from 'react'
+import React, { useRef, useLayoutEffect, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
+import { get } from 'lodash-es'
 import { useStaticQuery, graphql, withPrefix } from 'gatsby'
 
 import favicon from '../images/favicon.png'
+import faviconApple from '../images/favicon-apple.png'
 
 import Header from './header'
 import Footer from './footer'
@@ -14,7 +16,7 @@ const Layout = ({ children }) => {
   const headerRef = useRef()
   const footerRef = useRef()
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const root = document.documentElement
     root.style.setProperty(
       '--header-height',
@@ -24,7 +26,10 @@ const Layout = ({ children }) => {
       '--footer-height',
       `${footerRef.current.offsetHeight}px`
     )
-  }, [headerRef, footerRef])
+  }, [
+    get(headerRef, 'current.offsetHeight'),
+    get(footerRef, 'current.offsetHeight'),
+  ])
 
   const data = useStaticQuery(graphql`
     query siteTitleQuery {
@@ -53,6 +58,20 @@ const Layout = ({ children }) => {
           {
             href: favicon,
             rel: 'shortcut icon',
+          },
+          {
+            href: faviconApple,
+            rel: 'apple-touch-icon',
+          },
+          {
+            href: faviconApple,
+            sizes: '114x114',
+            rel: 'apple-touch-icon',
+          },
+          {
+            href: faviconApple,
+            sizes: '72x72',
+            rel: 'apple-touch-icon',
           },
         ]}
       />

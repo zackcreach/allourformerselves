@@ -15,8 +15,8 @@ const Header = ({ headerRef }) => {
           <img className="logo" src={logo} alt="All Our Former Selves logo" />
         </Link>
         <a href="#0" className="snipcart-checkout">
-          <div class="snipcart-summary">
-            <div class="snipcart-total-items" />
+          <div className="snipcart-summary">
+            <div className="snipcart-total-items" />
           </div>
           <svg viewBox="0 0 24 22" version="1.1" x="0px" y="0px">
             <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
