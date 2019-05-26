@@ -57,6 +57,12 @@ module.exports = {
         head: true,
       },
     },
+    {
+      resolve: `gatsby-plugin-facebook-pixel`,
+      options: {
+        pixelId: process.env.FB_TRACKING_ID,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
