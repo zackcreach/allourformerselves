@@ -60,7 +60,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-facebook-pixel`,
       options: {
-        pixelId: '186707818912530',
+        pixelId: process.env.FB_TRACKING_ID,
       },
     },
     `gatsby-transformer-sharp`,
