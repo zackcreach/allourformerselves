@@ -29,7 +29,7 @@ const ContactForm = () => {
       body: JSON.stringify(userInput),
     })
       .then(() => (setSubmitted(true), setSubmitting(false)))
-      .catch(error => alert(error))
+      .catch(error => console.log(error))
 
     event.preventDefault()
   }
