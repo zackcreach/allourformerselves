@@ -1273,9 +1273,9 @@ acorn-jsx@^5.0.0:
   integrity sha512-HJ7CfNHrfJLlNTzIEUTj43LNWGkqpRLxm3YjAlcD0ACydk9XynzYsCBHxut+iqt+1aBXkx9UP/w/ZqMr13XIzg==
 
 acorn@^5.0.0, acorn@^5.6.2:
-  version "5.7.3"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.7.3.tgz#67aa231bf8812974b85235a96771eb6bd07ea279"
-  integrity sha512-T/zvzYRfbVojPWahDsE5evJdHb3oJoQfFbsrKM7w5Zcs++Tr257tia3BmMP8XYVjp1S9RZXQMh7gao96BlqZOw==
+  version "5.7.4"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.7.4.tgz#3e8d8a9947d0599a1796d10225d7432f4a4acf5e"
+  integrity sha512-1D++VG7BhrtvQpNbBzovKNc1FLGGEE/oGe7b9xJm/RFHMBeUaUGpluV9RLjZa47YFdPcDAenEYuq9pQPcMdLJg==
 
 acorn@^6.0.5, acorn@^6.0.7:
   version "6.1.1"
@@ -5039,6 +5039,11 @@ gatsby-link@^2.0.16:
     "@babel/runtime" "^7.0.0"
     "@types/reach__router" "^1.0.0"
     prop-types "^15.6.1"
+
+gatsby-plugin-facebook-pixel@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-facebook-pixel/-/gatsby-plugin-facebook-pixel-1.0.3.tgz#d3cab36fa61803e9d412f36847775d383325dfdf"
+  integrity sha512-IM4e+5FkpLUCV/69tU+GFXVAs0EJXBfM/BARO/6SaMqalLfj1fj4ZXUyC8kHy3RiTMuw+y8g2mdkBMZqj7RyWQ==
 
 gatsby-plugin-google-analytics@^2.0.18:
   version "2.0.18"
