@@ -7,7 +7,7 @@
     "babel-plugin-styled-components": "^1.10.0",
     "core-js": "^2.6.5",
     "dotenv": "^7.0.0",
-    "gatsby": "^2.3.22",
+    "gatsby": "^2.32.13",
     "gatsby-image": "^2.0.38",
     "gatsby-plugin-facebook-pixel": "^1.0.3",
     "gatsby-plugin-google-analytics": "^2.0.18",
